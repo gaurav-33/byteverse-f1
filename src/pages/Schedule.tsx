@@ -198,7 +198,7 @@ export const Schedule = () => {
                                                 key={event.id}
                                                 event={event}
                                                 position={globalIndex % 2 === 0 ? 'left' : 'right'}
-                                                delay={i * 0.1}
+
                                                 // Assign Ref
                                                 nodeRef={(el: HTMLDivElement | null) => nodeRefs.current[globalIndex] = el}
                                             />
@@ -223,7 +223,7 @@ export const Schedule = () => {
     );
 };
 
-const TimelineEvent = ({ event, position, delay, nodeRef }: { event: any, position: 'left' | 'right', delay: number, nodeRef: any }) => {
+const TimelineEvent = ({ event, position, nodeRef }: { event: any, position: 'left' | 'right', nodeRef: any }) => {
 
     const isLeft = position === 'left';
 
