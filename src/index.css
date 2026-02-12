@@ -1,0 +1,130 @@
+@import "tailwindcss";
+
+@theme {
+    /* 1. F1 COLORS */
+    --color-primary: #ff1e00;
+    --color-primary-dark: #cc1800;
+    --color-asphalt: #15151e;
+    --color-carbon: #1a1a24;
+    --color-cyan-code: #00f0ff;
+    --color-f1-carbon: #15151e;
+    --color-f1-red: #ff1e00;
+
+    /* 2. FONTS */
+    --font-display: "Space Grotesk", sans-serif;
+    --font-mono: "JetBrains Mono", monospace;
+
+    /* 3. ANIMATIONS */
+    --animate-engine: engine-throb 2s infinite;
+    --animate-pulse-glow: pulse-glow 3s infinite;
+    --animate-marquee: marquee 20s linear infinite;
+    --animate-track-draw: draw-circuit 3s linear infinite;
+
+    /* 4. KEYFRAMES */
+    @keyframes engine-throb {
+        0% {
+            transform: scale(1);
+            box-shadow: 0 0 0 0 rgba(255, 30, 0, 0.7);
+        }
+
+        70% {
+            transform: scale(1.15);
+            box-shadow: 0 0 0 20px rgba(255, 30, 0, 0);
+        }
+
+        100% {
+            transform: scale(1);
+            box-shadow: 0 0 0 0 rgba(255, 30, 0, 0);
+        }
+    }
+
+    @keyframes pulse-glow {
+
+        0%,
+        100% {
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+        }
+
+        50% {
+            text-shadow: 0 0 20px rgba(0, 240, 255, 0.8), 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+    }
+
+    @keyframes marquee {
+        0% {
+            transform: translateX(0);
+        }
+
+        100% {
+            transform: translateX(-50%);
+        }
+    }
+
+    /* Circuit Path Drawing Animation */
+    @keyframes draw-circuit {
+        0% {
+            stroke-dashoffset: 1000;
+        }
+
+        100% {
+            stroke-dashoffset: 0;
+        }
+    }
+
+    /* CUSTOM BREAKPOINTS */
+    --breakpoint-sm: 480px;
+    --breakpoint-md: 600px;
+}
+
+/* 5. CUSTOM UTILITIES */
+@utility bg-carbon-fiber {
+    background-color: #15151e;
+    background-image:
+        linear-gradient(45deg, rgba(0, 0, 0, 0.4) 25%, transparent 25%, transparent 75%, rgba(0, 0, 0, 0.4) 75%, rgba(0, 0, 0, 0.4)),
+        linear-gradient(45deg, rgba(0, 0, 0, 0.4) 25%, transparent 25%, transparent 75%, rgba(0, 0, 0, 0.4) 75%, rgba(0, 0, 0, 0.4));
+    background-size: 4px 4px;
+    background-position: 0 0, 2px 2px;
+}
+
+@utility scanlines {
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0),
+            rgba(255, 255, 255, 0) 50%,
+            rgba(0, 0, 0, 0.1) 50%,
+            rgba(0, 0, 0, 0.1));
+    background-size: 100% 4px;
+    pointer-events: none;
+}
+
+@utility text-glow {
+    animation: pulse-glow 3s infinite;
+}
+
+@utility text-stroke-white {
+    -webkit-text-stroke: 1px white;
+    color: transparent;
+}
+
+@utility stroke-dasharray-1000 {
+    stroke-dasharray: 1000;
+}
+
+@utility stroke-dashoffset-1000 {
+    stroke-dashoffset: 1000;
+}
+
+@utility clip-hud {
+    clip-path: polygon(0 0,
+            100% 0,
+            100% 80%,
+            90% 100%,
+            0 100%);
+}
+
+@utility clip-hud-inverse {
+    clip-path: polygon(0 0,
+            100% 0,
+            100% 100%,
+            10% 100%,
+            0 80%);
+}
