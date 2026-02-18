@@ -16,7 +16,7 @@ export const Sponsors = () => {
             </div>
 
             {/* --- PAGE 1: COVER PAGE --- */}
-            <section className="relative min-h-screen flex flex-col items-center justify-center text-center px-6 pt-32 pb-20 z-10">
+            <section className="relative min-h-screen flex flex-col items-center justify-center text-center px-6 pt-16 md:pt-32 pb-20 z-10">
                 {/* Decorative F1 Elements */}
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/20 blur-[150px] rounded-full pointer-events-none"></div>
 
@@ -34,7 +34,7 @@ export const Sponsors = () => {
 
                     {/* Main Title */}
                     {/* Main Title */}
-                    <h1 className="w-full text-center mx-auto text-5xl md:text-8xl lg:text-9xl font-black italic tracking-tighter uppercase mb-2 leading-none">
+                    <h1 className="w-full text-center mx-auto text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black italic tracking-tighter uppercase mb-2 leading-none">
                         <span className="text-white block">BYTEVERSE</span>
                         <span className="text-stroke-white text-transparent block opacity-50">2026</span>
                     </h1>
