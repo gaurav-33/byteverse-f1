@@ -82,7 +82,7 @@ export const Gallery = () => {
                     <AnimatePresence>
                         {filteredImages.map((image, index) => (
                             <motion.div
-                                ref={el => (itemRefs.current[image.id] = el)}
+                                ref={el => { itemRefs.current[image.id] = el; }}
                                 layoutId={image.id.toString()} // Ensure ID is string for layoutId
                                 key={image.id}
                                 initial={{ opacity: 0, scale: 0.9 }}
