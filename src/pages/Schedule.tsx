@@ -3,71 +3,66 @@ import { useState, useEffect, useRef, useMemo } from 'react';
 // Hackathon Schedule Data
 const scheduleData = [
     {
-        day: "MARCH",
-        date: "MAR 01",
+        day: "FRI",
+        date: "MAR 20",
         events: [
-            { id: 1, time: "18:00", title: "Registration Opens", desc: "Hackathon registration opens online", location: "Online Portal", type: "ops", icon: "how_to_reg" }
+            { id: 1, time: "TBA", title: "Registration Opens", desc: "Hackathon registration opens online", location: "Online Portal", type: "ops", icon: "how_to_reg" }
         ]
     },
     {
-        day: "APRIL",
-        date: "APR 02",
+        day: "WED",
+        date: "MAR 25",
         events: [
             { id: 2, time: "TBA", title: "Info Session", desc: "Introductory info session for participants", location: "Online / Live Stream", type: "event", icon: "info" },
-            { id: 3, time: "18:00", title: "PPT Submissions Commence", desc: "Teams may start submitting PPT entries", location: "Submissions Portal", type: "ops", icon: "file_present" }
+            { id: 3, time: "TBA", title: "PPT Submissions Commence", desc: "Teams may start submitting PPT entries", location: "Submissions Portal", type: "ops", icon: "file_present" }
         ]
     },
     {
-        day: "APRIL",
-        date: "APR 09",
+        day: "SUN",
+        date: "APR 05",
         events: [
             { id: 4, time: "23:59", title: "PPT Submissions Deadline", desc: "Final deadline for PPT submissions", location: "Submissions Portal", type: "ops", icon: "timer" }
         ]
     },
     {
-        day: "APRIL",
+        day: "FRI",
         date: "APR 10",
         events: [
             { id: 5, time: "TBA", title: "Inauguration Ceremony", desc: "Opening & welcome remarks", location: "Main Hall / Stream", type: "event", icon: "event" },
-            { id: 6, time: "09:00", title: "Presentation Rounds — Day 1", desc: "Teams present their projects (Day 1)", location: "Presentation Halls", type: "race", icon: "groups" }
+            { id: 6, time: "09:00", title: "Presentation Rounds", desc: "Teams present their projects", location: "Presentation Halls", type: "race", icon: "groups" },
+            { id: 7, time: "TBA", title: "ByteVerse Registration Closes", desc: "Hackathon registration closes", location: "Online Portal", type: "ops", icon: "how_to_reg" }
         ]
     },
     {
-        day: "APRIL",
+        day: "SAT",
         date: "APR 11",
         events: [
-            { id: 7, time: "09:00", title: "Presentation Rounds — Day 2", desc: "Continuation of presentations (Day 2)", location: "Presentation Halls", type: "race", icon: "groups" },
-            { id: 8, time: "23:59", title: "Hackathon Registration Closes", desc: "Final registration cut-off", location: "Online Portal", type: "ops", icon: "how_to_reg" }
+            { id: 8, time: "09:00", title: "Hackathon Commences", desc: "Final registration cut-off", location: "Online Portal", type: "ops", icon: "how_to_reg" }
         ]
     },
     {
-        day: "APRIL",
+        day: "SUN",
+        date: "APR 12",
+        events: [
+            { id: 9, time: "10:00", title: "Mid Evaluation", desc: "Mid-event evaluations and mentor check-ins", location: "Evaluation Rooms", type: "event", icon: "preview" },
+
+            { id: 10, time: "20:00", title: "Hackathon Concludes", desc: "Submission deadline and end of build phase", location: "Event Campus & Online", type: "race", icon: "check_circle" },
+
+            { id: 11, time: "23:59", title: "Community Review Window Opens", desc: "Community review & voting period begins", location: "Community Portal", type: "event", icon: "chat" }
+        ]
+    },
+    {
+        day: "MON",
         date: "APR 13",
         events: [
-            { id: 9, time: "13:00", title: "Hackathon Commences", desc: "Official hackathon start — build phase begins", location: "Event Campus & Online", type: "race", icon: "code" }
+            { id: 12, time: "20:00", title: "Community Review Window Closes", desc: "End of the community voting window", location: "Community Portal", type: "event", icon: "chat" }
         ]
     },
     {
-        day: "APRIL",
-        date: "APR 14",
-        events: [
-            { id: 10, time: "10:00", title: "Mid Evaluation", desc: "Mid-event evaluations and mentor check-ins", location: "Evaluation Rooms", type: "event", icon: "preview" },
-            { id: 11, time: "19:00", title: "Hackathon Concludes", desc: "Submission deadline and end of build phase", location: "Event Campus & Online", type: "race", icon: "check_circle" },
-            { id: 12, time: "20:00", title: "Community Review Window Opens", desc: "Community review & voting period begins", location: "Community Portal", type: "event", icon: "chat" }
-        ]
-    },
-    {
-        day: "APRIL",
-        date: "APR 15",
-        events: [
-            { id: 13, time: "20:00", title: "Community Review Window Closes", desc: "End of the community voting window", location: "Community Portal", type: "event", icon: "chat" }
-        ]
-    },
-    {
-        day: "APRIL",
+        day: "MON",
         date: "APR 20",
         events: [
-            { id: 14, time: "TBA", title: "Closing Ceremony", desc: "Awards, highlights, and closing remarks", location: "Main Hall / Stream", type: "event", icon: "celebration" }
+            { id: 13, time: "TBA", title: "Closing Ceremony", desc: "Awards, highlights, and closing remarks", location: "Main Hall / Stream", type: "event", icon: "celebration" }
         ]
     }
 ];
