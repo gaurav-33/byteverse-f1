@@ -1,46 +1,15 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-
-const crewData = [
-    {
-        id: "RD-001",
-        name: "Sarah Jenkins",
-        role: "Race Director",
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuA1U1_KpkJxbGxa_36WZ7ND-VkESlc_VOcdjHWr1gAoW2klj3d4MsdoEgWA9xjV3TEQFC9tE4dY1xykI7l50ANxn8ehvwZlgT6m0fjlytNYtCOTTIzwZNl_CHvBdHYWj4qsNKSGyMGVInk0XFlSMuOOFbPm17SrtaxdT4rrpUkKMje4xKrGiNSfO1dLJhxEL7bL20-Qei6ycXrLrfrsCNm1xdjPCmvSgBufcs91rLw2vzw1AAHF2B_-MKVbWUMRilbmbp9KjTSBOBVw",
-        category: "Management",
-        stats: { experience: 98, calm: 95, speed: 70 }
-    },
-    {
-        id: "ENG-042",
-        name: "David Okoro",
-        role: "Chief Mechanic",
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAuoxz2P9yIQNgvOyJbu4H8J9KH7wtQvdW89KXv97TzHB0MXqh7JbwqF9AxFkROxMbAb66ZTdtUxevnBktqRL6z-0LPXfyVpsFi6iRR5JFDSOQP1vu5vjaIPt7NLQ3O7izKEmmeQUumuHCqAMJw26f04AKslGUZdiopkUxRBshbkqX5tWdrm9RjZKqH-vMOvMXNSewLs6-xNZzrOIJErsjuB03JBL3uLOvsOMO7Vjt-KIld_tQVpBfncws9-Qhh6QDdGn6KpcUYPHZy",
-        category: "Engineering",
-        stats: { experience: 92, calm: 88, speed: 96 }
-    },
-    {
-        id: "DES-007",
-        name: "Elena Rodriguez",
-        role: "Head of Aero",
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAY5Hi2hBZ9yVTRg7oEalRO2B4sqezfe_vy_BD0xEHUJ0DgZihSJAtoMCtpCA9XPTNcnbJ-8BP878x2Uj-16KE_ZRRl2uV1KO5GDqDowCRioUO_B8pqzrncyb00z0-SJ3_WygBaZSC3-hzvIhw6uKy4kk_2VIV5f8LQ32RuCPpjJB2Wcrp8Uv5xCCphdhE7lLV7P2aMbed6MeOn2Cvi3xX9qA6oLh2mOcacqdo7R0JnnjtEsZVAHS-rsBWJxmo7o_oiAXl8itu7HKBs",
-        category: "Design",
-        stats: { experience: 89, calm: 90, speed: 85 }
-    },
-    {
-        id: "LOG-088",
-        name: "Marcus Webb",
-        role: "Pit Boss",
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCEh6cMSxTNBsu4CGw4O_IZ5kpdcLsUhcXS2yjVM12rVVmcvc2uIpMQhLFnGm8ztzZHEazDFHNwlRmJhIBmvz-1y0yBuszaLunsJ04uOzgOWEujDfVVgJ2HRkksOuHtde3ywqGpK6mgHw7bowbQDpvq1EwaMCXkN1MnmBGKZXUwRwDzhcwRTXC7xwsLQBWmF5VcnWIzh3AmOfRN_lr05B5NrRbPxMgFYnS6XV8VqBkJLAHsqls7YNOluJvNNP3h-PiQGJVMdy1k5TQY",
-        category: "Logistics",
-        stats: { experience: 94, calm: 99, speed: 92 }
-    }
-];
+import crewData from '../data/pit-crew';
 
 export const PitCrew = () => {
     const [activeCategory, setActiveCategory] = useState("All");
 
-    const categories = ["All", "Management", "Engineering", "Design", "Logistics"];
-    const filteredCrew = activeCategory === "All" ? crewData : crewData.filter(m => m.category === activeCategory);
+    const categories = ["All", "Website", "Speaker and Judges", "Design", "Content", "Sponsorship", "DevFolio"];
+
+    const filteredCrew = activeCategory === "All"
+        ? crewData
+        : crewData.filter(m => m.team.includes(activeCategory));
 
     return (
         <section className="min-h-screen bg-asphalt text-white py-24 font-display overflow-hidden relative">
@@ -97,64 +66,38 @@ export const PitCrew = () => {
 const CrewCard = ({ member, index }: { member: any, index: number }) => {
     return (
         <motion.div
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            className={`group relative h-[450px] bg-carbon border border-white/10 rounded-xl overflow-hidden transition-colors duration-500 hover:border-f1-red/50`}
+            transition={{ duration: 0.5, delay: index * 0.08 }}
+            style={{ height: 320 }}
+            className="min-w-[240px] w-[240px] md:w-[320px] bg-carbon border border-white/10 rounded-xl overflow-hidden relative group h-[320px]"
         >
-            {/* Image Background */}
             <div className="absolute inset-0 z-0">
-                <img
-                    src={member.image}
-                    alt={member.name}
-                    className={`w-full h-full object-cover transition-all duration-700 scale-100 group-hover:scale-110 grayscale-0 md:grayscale md:group-hover:grayscale-0`}
-                />
-                <div className={`absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent transition-opacity duration-500 opacity-90 group-hover:opacity-60`}></div>
+                <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
             </div>
 
-            {/* Content Overlay */}
-            <div className="absolute inset-0 z-10 p-6 flex flex-col justify-end">
-
-                {/* ID Badge */}
-                <div className="absolute top-6 right-6">
-                    <div className="text-[10px] font-mono text-white/40 border border-white/20 px-2 py-1 rounded backdrop-blur-sm">
-                        {member.id}
+            <div className="relative z-10 p-4 flex flex-col justify-end h-full">
+                <div className="mb-2">
+                    <div className="text-[10px] font-mono text-primary uppercase tracking-widest">
+                        {member.team.filter((t: string) => t !== "All").join(" · ")}
                     </div>
+                    <h3 className="text-lg md:text-xl font-black italic uppercase text-white">{member.name}</h3>
                 </div>
 
-                {/* Role & Name */}
-                <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                    <div className="text-f1-red font-mono text-xs uppercase tracking-widest mb-1">{member.role}</div>
-                    <h3 className="text-3xl font-black italic uppercase text-white leading-none mb-4">{member.name}</h3>
-                </div>
-
-                {/* Stats Panel (Reveals on Hover, HIDDEN on Mobile) */}
-                <div className={`hidden md:block overflow-hidden transition-all duration-500 ease-out border-t border-white/10 h-0 pt-0 group-hover:h-32 group-hover:pt-4`}>
-                    <div className={`space-y-3 transition-opacity duration-700 delay-100 opacity-0 group-hover:opacity-100`}>
-                        <StatBar label="EXP" value={member.stats.experience} />
-                        <StatBar label="CALM" value={member.stats.calm} />
-                        <StatBar label="PACE" value={member.stats.speed} />
-                    </div>
+                <div className="flex items-center gap-2">
+                    <a href={member.linkedin} target="_blank" rel="noreferrer" className="text-white/80 hover:text-primary transition-colors text-xs md:text-sm" aria-label="LinkedIn">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.29c-.966 0-1.75-.788-1.75-1.76 0-.972.784-1.759 1.75-1.759s1.75.787 1.75 1.759c0 .972-.784 1.76-1.75 1.76zm13.5 10.29h-3v-4.75c0-1.133-.02-2.59-1.58-2.59-1.58 0-1.82 1.233-1.82 2.51v4.83h-3v-9h2.88v1.23h.04c.4-.76 1.38-1.56 2.84-1.56 3.04 0 3.6 2 3.6 4.6v5.73z" />
+                        </svg>
+                    </a>
+                    <a href={member.github} target="_blank" rel="noreferrer" className="text-white/80 hover:text-primary transition-colors text-xs md:text-sm" aria-label="GitHub">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
+                            <path d="M12 .5c-6.627 0-12 5.373-12 12 0 5.302 3.438 9.8 8.205 11.387.6.113.82-.263.82-.583 0-.288-.01-1.05-.015-2.06-3.338.726-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.09-.745.083-.73.083-.73 1.205.085 1.84 1.238 1.84 1.238 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.76-1.605-2.665-.304-5.466-1.332-5.466-5.93 0-1.31.467-2.381 1.235-3.221-.123-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.29-1.552 3.296-1.23 3.296-1.23.654 1.653.242 2.873.119 3.176.77.84 1.233 1.911 1.233 3.221 0 4.61-2.804 5.624-5.476 5.92.43.37.814 1.102.814 2.222 0 1.606-.015 2.898-.015 3.293 0 .322.216.699.825.58 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                        </svg>
+                    </a>
                 </div>
             </div>
-
-            {/* Scanning Line Effect */}
-            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-f1-red/10 to-transparent -translate-y-full group-hover:translate-y-full transition-transform duration-1000 ease-in-out pointer-events-none z-20"></div>
         </motion.div>
     );
 };
-
-const StatBar = ({ label, value }: { label: string, value: number }) => (
-    <div className="flex items-center gap-3">
-        <span className="text-[10px] font-mono text-gray-400 w-8">{label}</span>
-        <div className="flex-1 h-1 bg-white/10 rounded-full overflow-hidden">
-            <motion.div
-                initial={{ width: 0 }}
-                whileInView={{ width: `${value}%` }}
-                transition={{ duration: 1, ease: "easeOut" }}
-                className="h-full bg-f1-red"
-            ></motion.div>
-        </div>
-        <span className="text-[10px] font-mono text-white w-6 text-right">{value}%</span>
-    </div>
-);

@@ -18,9 +18,9 @@ export const NavBar = () => {
             <Link href="/prizes" className={`uppercase tracking-widest transition-all ${mobile ? 'text-sm font-bold py-3 px-4 w-full text-center hover:bg-white/5 rounded-xl border border-transparent hover:border-white/5' : 'px-3 lg:px-4 xl:px-5 py-2 text-sm rounded-full'} ${location === '/prizes' ? (mobile ? 'text-primary bg-white/5 border-white/5' : 'text-white bg-white/10') : 'text-gray-300 hover:text-white hover:bg-white/10'}`} onClick={() => mobile && setIsMobileMenuOpen(false)}>
                 Prizes
             </Link>
-            {/* <Link href="/pit-crew" className={`uppercase tracking-widest transition-all ${mobile ? 'text-sm font-bold py-3 px-4 w-full text-center hover:bg-white/5 rounded-xl border border-transparent hover:border-white/5' : 'px-3 lg:px-4 xl:px-5 py-2 text-sm rounded-full'} ${location === '/pit-crew' ? (mobile ? 'text-primary bg-white/5 border-white/5' : 'text-white bg-white/10') : 'text-gray-300 hover:text-white hover:bg-white/10'}`} onClick={() => mobile && setIsMobileMenuOpen(false)}>
+            <Link href="/pit-crew" className={`uppercase tracking-widest transition-all ${mobile ? 'text-sm font-bold py-3 px-4 w-full text-center hover:bg-white/5 rounded-xl border border-transparent hover:border-white/5' : 'px-3 lg:px-4 xl:px-5 py-2 text-sm rounded-full'} ${location === '/pit-crew' ? (mobile ? 'text-primary bg-white/5 border-white/5' : 'text-white bg-white/10') : 'text-gray-300 hover:text-white hover:bg-white/10'}`} onClick={() => mobile && setIsMobileMenuOpen(false)}>
                 Pit Crew
-            </Link> */}
+            </Link>
             <Link href="/gallery" className={`uppercase tracking-widest transition-all ${mobile ? 'text-sm font-bold py-3 px-4 w-full text-center hover:bg-white/5 rounded-xl border border-transparent hover:border-white/5' : 'px-3 lg:px-4 xl:px-5 py-2 text-sm rounded-full'} ${location === '/gallery' ? (mobile ? 'text-primary bg-white/5 border-white/5' : 'text-white bg-white/10') : 'text-gray-300 hover:text-white hover:bg-white/10'}`} onClick={() => mobile && setIsMobileMenuOpen(false)}>
                 Gallery
             </Link>
