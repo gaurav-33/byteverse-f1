@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'wouter';
+import Organizers from '../components/organisors';
 
 // Custom Date and Time for the Countdown
 const TARGET_DATE = new Date('2026-03-15T10:00:00'); // Example: March 15, 2026, 10:00 AM
@@ -163,6 +164,8 @@ export const Landing = () => {
                 </div>
             </main>
 
+                    <Organizers />
+
                     {/* Organizers Carousel */}
                     <section className="relative z-20 max-w-7xl mx-auto px-6 py-12">
                         <div className="mb-8 flex items-center justify-between">
@@ -209,6 +212,7 @@ export const Landing = () => {
                             </button>
                         </div>
                     </section>
+
 
             {/* Bottom Telemetry & Ticker */}
             <footer className={`relative z-20 w-full bg-carbon/90 border-t border-white/5 backdrop-blur-lg mt-auto transition-all duration-1000 delay-500 ${heroVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}`}>
