@@ -1,39 +1,86 @@
 // import { motion } from 'framer-motion';
 
-
-
 export const Prizes = () => {
-    return (
-        <section className="relative min-h-screen bg-asphalt text-white py-24 overflow-hidden font-display selection:bg-neon-cyan selection:text-black">
+  return (
+    <section className="relative min-h-screen bg-asphalt text-white py-24 overflow-hidden font-display selection:bg-neon-cyan selection:text-black">
+      {/* 1. Background Ambience */}
+      <div className="fixed inset-0 pointer-events-none z-0">
+        <div className="absolute inset-0 bg-carbon-fiber opacity-60"></div>
+        <div className="absolute top-0 right-0 w-3/4 h-full bg-gradient-to-l from-primary/5 to-transparent skew-x-[-12deg]"></div>
+      </div>
 
-            {/* 1. Background Ambience */}
-            <div className="fixed inset-0 pointer-events-none z-0">
-                <div className="absolute inset-0 bg-carbon-fiber opacity-60"></div>
-                <div className="absolute top-0 right-0 w-3/4 h-full bg-gradient-to-l from-primary/5 to-transparent skew-x-[-12deg]"></div>
+      <main className="relative z-10 max-w-7xl mx-auto px-6 flex flex-col items-center">
+        {/* 2. Header */}
+        <div className="w-full flex flex-col md:flex-row items-center md:items-end justify-between mb-24 border-b border-white/10 pb-6 relative z-30 text-center md:text-left">
+          <div className="w-full md:w-auto mb-6 md:mb-0">
+            <div className="text-neon-cyan font-mono text-xs tracking-[0.4em] mb-2 pl-1 flex items-center justify-center md:justify-start gap-2">
+              <span className="w-2 h-2 bg-neon-cyan rounded-full animate-pulse"></span>
+              PODIUM: CONSTRUCTORS
             </div>
+            <h1 className="text-6xl md:text-8xl font-black italic tracking-tighter uppercase">
+              Victory{" "}
+              <span className="text-stroke-white text-transparent">Lane</span>
+            </h1>
+          </div>
 
-            <main className="relative z-10 max-w-7xl mx-auto px-6 flex flex-col items-center">
+          <div className="w-full md:w-auto flex flex-col items-center md:items-end">
+            <div className="text-gray-500 font-mono text-xs">SYSTEM STATUS</div>
+            <div className="text-primary font-bold text-xl animate-pulse">
+              LIVE FEED ACTIVE
+            </div>
+          </div>
+        </div>
 
-                {/* 2. Header */}
-                <div className="w-full flex flex-col md:flex-row items-center md:items-end justify-between mb-24 border-b border-white/10 pb-6 relative z-30 text-center md:text-left">
-                    <div className="w-full md:w-auto mb-6 md:mb-0">
-                        <div className="text-neon-cyan font-mono text-xs tracking-[0.4em] mb-2 pl-1 flex items-center justify-center md:justify-start gap-2">
-                            <span className="w-2 h-2 bg-neon-cyan rounded-full animate-pulse"></span>
-                            PODIUM: CONSTRUCTORS
-                        </div>
-                        <h1 className="text-6xl md:text-8xl font-black italic tracking-tighter uppercase">
-                            Victory <span className="text-stroke-white text-transparent">Lane</span>
-                        </h1>
-                    </div>
+        <div className="w-full max-w-6xl mt-10">
+          <div className="text-neon-cyan font-mono text-xs tracking-[0.4em] mb-6 pl-1 flex items-center justify-center md:justify-start gap-2">
+            <span className="w-2 h-2 bg-neon-cyan rounded-full animate-pulse"></span>
+            PRIZE MONEY
+          </div>
 
-                    <div className="w-full md:w-auto flex flex-col items-center md:items-end">
-                        <div className="text-gray-500 font-mono text-xs">SYSTEM STATUS</div>
-                        <div className="text-primary font-bold text-xl animate-pulse">LIVE FEED ACTIVE</div>
-                    </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { label: "P1", title: "Winner", amount: "₹10,000" },
+              { label: "P2", title: "2nd Place", amount: "₹7,000" },
+              { label: "P3", title: "3rd Place", amount: "₹5,000" },
+              {
+                label: "SPECIAL",
+                title: "Best First Year Team",
+                amount: "₹4,000",
+              },
+              {
+                label: "SPECIAL",
+                title: "Best All Girls Team",
+                amount: "₹4,000",
+              },
+            ].map((prize) => (
+              <div
+                key={`${prize.label}-${prize.title}`}
+                className="rounded-xl bg-[#121215] border border-white/20 p-6 relative group hover:border-white/40 transition-colors"
+              >
+                <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-white/10 group-hover:border-neon-cyan transition-colors"></div>
+                <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-white/10 group-hover:border-neon-cyan transition-colors"></div>
+
+                <div className="font-mono text-neon-cyan text-xs tracking-[0.3em] mb-3">
+                  {prize.label}
                 </div>
 
-                <div className="text-primary font-bold text-xl animate-pulse">To be announced soon... </div>
-                {/* <div className="w-full max-w-6xl relative flex flex-col md:flex-row items-end justify-center gap-6 perspective-1000">
+                <h3 className="text-2xl font-black italic uppercase mb-2">
+                  {prize.title}
+                </h3>
+
+                <div className="mt-4 pt-4 border-t border-white/10">
+                  <div className="text-gray-500 font-mono text-[10px] tracking-[0.3em] uppercase mb-1">
+                    Prize Amount
+                  </div>
+                  <div className="text-4xl font-black italic tracking-tight text-white">
+                    {prize.amount}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        {/* <div className="w-full max-w-6xl relative flex flex-col md:flex-row items-end justify-center gap-6 perspective-1000">
 
                     <TopDownCarCard
                         rank="P2"
@@ -78,9 +125,9 @@ export const Prizes = () => {
                     />
 
                 </div> */}
-            </main>
-        </section>
-    );
+      </main>
+    </section>
+  );
 };
 
 // --- SUB-COMPONENT: Top-Down Car Card ---
