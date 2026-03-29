@@ -4,7 +4,7 @@ import { Link } from 'wouter';
 import Organizers from '../components/organisors';
 
 // Custom Date and Time for the Countdown
-const TARGET_DATE = new Date('2026-03-15T10:00:00'); // Example: March 15, 2026, 10:00 AM
+const TARGET_DATE = new Date(Date.UTC(2026, 3, 11, 4, 30, 0)); // 11 Apr 2026, 10:00 IST
 
 // Organizers data (arranged by position priority)
 const organizers = [
