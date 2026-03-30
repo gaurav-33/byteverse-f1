@@ -135,7 +135,7 @@ const TimelineItem = ({ year, title, desc, align }: { year: string, title: strin
 );
 
 const TechCard = ({ title, value, icon }: any) => (
-    <div className="bg-white/5 border border-white/5 p-6 rounded-xl hover:bg-white/10 hover:border-f1-red/50 transition-all duration-300 group cursor-default">
+    <div className="bg-white/5 border border-white/5 p-6 hover:bg-white/10 hover:border-f1-red/50 transition-all duration-300 group cursor-default [clip-path:polygon(0_0,100%_0,100%_calc(100%-15px),calc(100%-15px)_100%,0_100%)]">
         <div className="flex items-center justify-between mb-4">
             <span className="text-gray-500 font-mono text-xs uppercase tracking-wider">{title}</span>
             <span className="material-icons text-white/20 group-hover:text-f1-red transition-colors">{icon}</span>

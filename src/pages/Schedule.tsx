@@ -354,7 +354,7 @@ const TimeDisplay = ({ time, textColorClass, align }: { time: string, textColorC
 );
 
 const EventCard = ({ event, borderColorClass, textColorClass }: { event: any, borderColorClass: string, textColorClass: string }) => (
-    <div className={`relative w-full bg-white/5 border-l-2 ${borderColorClass} p-6 rounded-r-xl md:rounded-xl overflow-hidden group-hover:bg-white/10 transition-colors duration-300 hover:shadow-[0_0_30px_rgba(0,0,0,0.3)] text-left`}>
+    <div className={`relative w-full bg-white/5 border-l-2 ${borderColorClass} p-6 overflow-hidden group-hover:bg-white/10 transition-colors duration-300 hover:shadow-[0_0_30px_rgba(0,0,0,0.3)] text-left [clip-path:polygon(0_0,100%_0,100%_calc(100%-15px),calc(100%-15px)_100%,0_100%)]`}>
         {/* Mobile Time (visible only on small screens) */}
         <div className="md:hidden mb-2 font-mono text-xl font-bold text-white">
             {event.time} <span className="text-[10px] text-gray-500 font-normal">LOCAL</span>

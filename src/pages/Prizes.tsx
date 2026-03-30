@@ -32,7 +32,7 @@ export const Prizes = () => {
                     </div>
                 </div>
 
-                <div className="w-full max-w-7xl relative flex flex-col lg:flex-row items-end justify-center gap-4 lg:gap-6 perspective-1000">
+                <div className="w-full max-w-7xl relative flex flex-col lg:flex-row items-center lg:items-end justify-center gap-4 lg:gap-6 perspective-1000">
 
                     <TopDownCarCard
                         rank="P1"
