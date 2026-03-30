@@ -176,7 +176,7 @@ export const Landing = () => {
             <Organizers />
 
             {/* Organizers Carousel */}
-            <section className="relative z-20 max-w-7xl mx-auto px-6 py-12">
+            <section className="relative z-20 w-full min-w-0 max-w-7xl mx-auto px-6 py-12">
                 <div className="mb-8 flex items-center justify-between">
                     <div>
                         <div className="text-xs font-mono text-primary tracking-widest mb-2">LEAD // ORGANIZERS</div>
@@ -185,7 +185,7 @@ export const Landing = () => {
                     </div>
                 </div>
 
-                <div className="relative">
+                <div className="relative -mx-6 md:mx-0">
                     {/* hide scrollbar visually for the carousel */}
                     <style>{`#organizers-carousel::-webkit-scrollbar{display:none} #organizers-carousel{scrollbar-width:none;-ms-overflow-style:none}`}</style>
                     <button
@@ -195,16 +195,22 @@ export const Landing = () => {
                             if (!el) return;
                             el.scrollBy({ left: -Math.round(el.clientWidth * 0.7), behavior: 'smooth' });
                         }}
-                        className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 bg-black/60 border border-white/10 hover:bg-primary hover:border-primary backdrop-blur flex items-center justify-center transition-all duration-300 [clip-path:polygon(8px_0,100%_0,100%_calc(100%-8px),calc(100%-8px)_100%,0_100%,0_8px)]"
+                        className="absolute left-2 top-1/2 -translate-y-1/2 z-30 w-10 h-10 bg-black/60 border border-white/10 hover:bg-primary hover:border-primary backdrop-blur flex items-center justify-center transition-all duration-300 [clip-path:polygon(6px_0,100%_0,100%_calc(100%-6px),calc(100%-6px)_100%,0_100%,0_6px)]"
                     >
                         <span className="material-icons text-white">chevron_left</span>
                     </button>
 
-                    <div id="organizers-carousel" ref={carouselRef} className="no-scrollbar overflow-x-auto scroll-smooth py-2 px-6">
+                    <div id="organizers-carousel" ref={carouselRef} className="no-scrollbar overflow-x-auto scroll-smooth py-4">
                         <div className="flex gap-6 items-stretch">
+                            {/* Mobile Spacer */}
+                            <div className="w-6 shrink-0 md:hidden" />
+                            
                             {organizers.map((org, i) => (
                                 <OrganizerCard key={org.github || i} organizer={org} index={i} />
                             ))}
+
+                            {/* Mobile Spacer */}
+                            <div className="w-6 shrink-0 md:hidden" />
                         </div>
                     </div>
 
@@ -215,7 +221,7 @@ export const Landing = () => {
                             if (!el) return;
                             el.scrollBy({ left: Math.round(el.clientWidth * 0.7), behavior: 'smooth' });
                         }}
-                        className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 bg-black/60 border border-white/10 hover:bg-primary hover:border-primary backdrop-blur flex items-center justify-center transition-all duration-300 [clip-path:polygon(8px_0,100%_0,100%_calc(100%-8px),calc(100%-8px)_100%,0_100%,0_8px)]"
+                        className="absolute right-2 top-1/2 -translate-y-1/2 z-30 w-10 h-10 bg-black/60 border border-white/10 hover:bg-primary hover:border-primary backdrop-blur flex items-center justify-center transition-all duration-300 [clip-path:polygon(6px_0,100%_0,100%_calc(100%-6px),calc(100%-6px)_100%,0_100%,0_6px)]"
                     >
                         <span className="material-icons text-white">chevron_right</span>
                     </button>
