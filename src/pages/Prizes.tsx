@@ -117,13 +117,17 @@ export const Prizes = () => {
                             </div>
                             <div className="space-y-6">
                                 <div className="space-y-2">
-                                    <div className="text-[10px] font-mono text-yellow-500 uppercase tracking-widest">TOP ALL-GIRLS TEAM — ₹ 4,000</div>
+                                    <div className="text-[10px] font-mono text-yellow-500 uppercase tracking-widest flex items-center gap-1">
+                                        <span>TOP ALL-GIRLS TEAM — </span><span className="font-sans text-[11px]">₹</span><span> 4,000</span>
+                                    </div>
                                     <p className="text-xs text-gray-400 leading-relaxed font-mono">
                                         Awarded to the fastest all-female crew. <span className="text-white/60 italic">Condition: Min. 20 all-girls teams must submit their final hack.</span>
                                     </p>
                                 </div>
                                 <div className="space-y-2">
-                                    <div className="text-[10px] font-mono text-yellow-500 uppercase tracking-widest">TOP ALL-1ST YEAR TEAM — ₹ 4,000</div>
+                                    <div className="text-[10px] font-mono text-yellow-500 uppercase tracking-widest flex items-center gap-1">
+                                        <span>TOP ALL-1ST YEAR TEAM — </span><span className="font-sans text-[11px]">₹</span><span> 4,000</span>
+                                    </div>
                                     <p className="text-xs text-gray-400 leading-relaxed font-mono">
                                         Awarded to the highest performing 1st-year rookies. <span className="text-white/60 italic">Condition: Min. 10 all-1st-year teams must submit their final hack.</span>
                                     </p>
@@ -235,7 +239,10 @@ const TopDownCarCard = ({ rank, tier, prize, accentColor, glowColor, textColor, 
                     <div className="flex justify-between items-end mb-4">
                         <div>
                             <div className="text-gray-500 text-[10px] uppercase tracking-widest font-mono mb-1">Total Prize</div>
-                            <div className={`text-4xl font-bold font-mono tracking-tight text-white`}>{prize}</div>
+                            <div className={`text-4xl font-bold font-mono tracking-tight text-white flex items-baseline gap-1`}>
+                                <span className="font-sans text-3xl font-normal opacity-80 -mr-1">₹</span>
+                                <span>{prize.replace('₹', '').trim()}</span>
+                            </div>
                         </div>
                         {isWinner && <span className={`material-icons ${winnerTheme.trophy} animate-pulse`}>emoji_events</span>}
                     </div>
