@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'wouter';
+
 import Organizers from '../components/organisors';
 import F1CarTicker from '../components/F1CarTicker';
 import { About } from './About';
@@ -190,13 +190,14 @@ export const Landing = () => {
                     </div>
 
                     {/* Button */}
-                    <Link href="/tracks">
-                        <button className="relative w-32 h-32 rounded-full bg-gradient-to-b from-gray-800 to-black border-4 border-gray-700 md:border-gray-700 shadow-[0_0_50px_rgba(0,0,0,0.8)] flex flex-col items-center justify-center transform transition-all duration-200 active:scale-95 group-hover:border-primary group-hover:shadow-[0_0_80px_rgba(255,30,0,0.6)] border-primary shadow-[0_0_80px_rgba(255,30,0,0.6)] md:shadow-[0_0_50px_rgba(0,0,0,0.8)] overflow-hidden">
-                            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/10 to-transparent opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                            <span className="material-icons text-4xl text-white mb-1 drop-shadow-md text-primary md:text-white group-hover:text-primary transition-colors">rocket_launch</span>
-                            <span className="text-[10px] font-black uppercase tracking-widest text-white/60 text-white md:text-white/60 group-hover:text-white transition-colors">Launch</span>
-                        </button>
-                    </Link>
+                    <button 
+                        onClick={() => document.getElementById('tracks')?.scrollIntoView({ behavior: 'smooth' })}
+                        className="relative w-32 h-32 rounded-full bg-gradient-to-b from-gray-800 to-black border-4 border-gray-700 md:border-gray-700 shadow-[0_0_50px_rgba(0,0,0,0.8)] flex flex-col items-center justify-center transform transition-all duration-200 active:scale-95 group-hover:border-primary group-hover:shadow-[0_0_80px_rgba(255,30,0,0.6)] border-primary shadow-[0_0_80px_rgba(255,30,0,0.6)] md:shadow-[0_0_50px_rgba(0,0,0,0.8)] overflow-hidden"
+                    >
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/10 to-transparent opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <span className="material-icons text-4xl text-white mb-1 drop-shadow-md text-primary md:text-white group-hover:text-primary transition-colors">rocket_launch</span>
+                        <span className="text-[10px] font-black uppercase tracking-widest text-white/60 text-white md:text-white/60 group-hover:text-white transition-colors">Launch</span>
+                    </button>
 
 
                     {/* Decorative connection lines */}
