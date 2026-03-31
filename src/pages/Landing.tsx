@@ -20,6 +20,27 @@ const organizers = [
     { name: 'Tanay Palekar', position: 'Lead, Team Nougat', linkedin: 'https://www.linkedin.com/in/palekar-tanay-80b0a428b', github: 'https://github.com/tanay4768', image: '/tanay.jpg' }
 ];
 
+// Current Sponsors Data
+const currentSponsors = [
+    {
+        category: "Title Sponsor",
+        icon: "star",
+        color: "text-yellow-500",
+        sponsors: [
+            { name: "Unstop", domain: "unstop.com", useSimpleIcon: false, imageUrl: "/unstop-logo.png" }
+        ]
+    },
+    {
+        category: "Sub Event Sponsors",
+        icon: "event",
+        color: "text-pink-500",
+        sponsors: [
+            { name: "Zulip", domain: "zulip.com", useSimpleIcon: true, slug: "zulip" },
+            { name: "Appwrite", domain: "appwrite.io", useSimpleIcon: true, slug: "appwrite"}
+        ]
+    }
+];
+
 export const Landing = () => {
     const [timeLeft, setTimeLeft] = useState({
         days: 0,
@@ -235,6 +256,61 @@ export const Landing = () => {
                 </div>
             </section>
 
+            {/* --- CURRENT SPONSORS SECTION --- */}
+            <section className="relative z-20 w-full min-w-0 max-w-7xl mx-auto px-6 py-12">
+                <div className="mb-8 flex items-center justify-between">
+                    <div>
+                        <div className="text-xs font-mono text-primary tracking-widest mb-2">OUR // PARTNERS</div>
+                        <h2 className="text-4xl font-black italic uppercase">Current Sponsors</h2>
+                        <p className="text-gray-400 mt-2 max-w-2xl">The organizations powering innovation at ByteVerse</p>
+                    </div>
+                </div>
+
+                <div className="space-y-16">
+                    {currentSponsors.map((group, i) => (
+                        <div key={i} className="relative">
+                            <div className="flex items-center gap-3 mb-8">
+                                <span className={`material-icons text-3xl ${group.color}`}>{group.icon}</span>
+                                <h3 className="text-2xl md:text-3xl font-black italic uppercase text-white">{group.category}</h3>
+                            </div>
+
+                            <div className={group.sponsors.length === 1 ? "flex items-center" : "grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"}>
+                                {/* Added explicit 'any' type to avoid TS errors without changing external array types */}
+                                {group.sponsors.map((sponsor: any) => (
+                                    <div 
+                                        key={sponsor.name} 
+                                        className={`group relative bg-carbon border border-white/10 rounded-xl p-6 flex flex-col items-center justify-center gap-5 hover:border-white/30 transition-all duration-300 hover:-translate-y-1 min-h-[160px] ${group.sponsors.length === 1 ? 'w-full max-w-[340px] md:min-h-[200px]' : ''}`}
+                                    >
+                                        <img
+                                            src={
+                                                sponsor.imageUrl 
+                                                ? sponsor.imageUrl 
+                                                : sponsor.useSimpleIcon && sponsor.slug
+                                                    ? `https://cdn.simpleicons.org/${sponsor.slug}`
+                                                    : `https://img.logo.dev/${sponsor.domain}?token=pk_VZJykc4JQu6v2ZeJRBNNtA`
+                                            }
+                                            alt={sponsor.name}
+                                            className={`w-auto max-w-full object-contain transition-all duration-300 ${group.sponsors.length === 1 ? 'h-16 md:h-20' : 'h-12'}`}
+                                            onError={(e) => {
+                                                (e.target as HTMLImageElement).style.display = 'none';
+                                                (e.target as HTMLImageElement).nextElementSibling?.classList.remove('hidden');
+                                            }}
+                                        />
+
+                                        <div className="hidden w-12 h-12 rounded-full bg-white/5 items-center justify-center mb-2 group-hover:bg-white/10 transition-colors">
+                                            <span className={`font-black text-xl uppercase ${group.color}`}>{sponsor.name.charAt(0)}</span>
+                                        </div>
+
+                                        <div className={`text-xs font-bold text-center text-gray-400 group-hover:text-white uppercase tracking-widest leading-relaxed ${group.sponsors.length === 1 ? 'text-sm' : ''}`}>
+                                            {sponsor.name}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </section>
 
             {/* Bottom Telemetry & Ticker */}
             <footer className={`relative z-20 w-full bg-carbon/90 border-t border-white/5 backdrop-blur-lg mt-auto transition-all duration-1000 delay-500 ${heroVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}`}>
@@ -352,4 +428,3 @@ const OrganizerCard = ({ organizer, index }: { organizer: any, index: number }) 
         </motion.div>
     );
 };
-
