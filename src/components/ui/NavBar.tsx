@@ -48,6 +48,9 @@ export const NavBar = () => {
             <Link href="/gallery" className={getLinkClass(mobile)} onClick={() => mobile && setIsMobileMenuOpen(false)}>
                 Gallery
             </Link>
+            <a onClick={(e) => handleNav(e, 'sponsors', mobile)} className={getLinkClass(mobile)}>
+                Sponsors
+            </a>
             <a onClick={(e) => handleNav(e, 'about', mobile)} className={getLinkClass(mobile)}>
                 About
             </a>

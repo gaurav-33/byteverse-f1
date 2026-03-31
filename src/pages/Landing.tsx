@@ -26,26 +26,7 @@ const organizers = [
     { name: 'Tanay Palekar', position: 'Lead, Team Nougat', linkedin: 'https://www.linkedin.com/in/palekar-tanay-80b0a428b', github: 'https://github.com/tanay4768', image: '/tanay.jpg' }
 ];
 
-// Current Sponsors Data
-const currentSponsors = [
-    {
-        category: "Title Sponsor",
-        icon: "star",
-        color: "text-yellow-500",
-        sponsors: [
-            { name: "Unstop", domain: "unstop.com", useSimpleIcon: false, imageUrl: "/unstop-logo.png" }
-        ]
-    },
-    {
-        category: "Sub Event Sponsors",
-        icon: "event",
-        color: "text-pink-500",
-        sponsors: [
-            { name: "Zulip", domain: "zulip.com", useSimpleIcon: true, slug: "zulip" },
-            { name: "Appwrite", domain: "appwrite.io", useSimpleIcon: true, slug: "appwrite"}
-        ]
-    }
-];
+import { Sponsors } from '../components/Sponsors';
 
 export const Landing = () => {
     const [timeLeft, setTimeLeft] = useState({
@@ -294,6 +275,7 @@ export const Landing = () => {
                 </div>
             </section>
 
+            <Sponsors />
 
             <section className="relative z-20 w-full max-w-7xl mx-auto px-6 py-12 mb-12">
                 <QuoteBlock quote={"Byteverse is where ideas meet build — ship something you believe in and learn along the way."}
