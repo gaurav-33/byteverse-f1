@@ -5,18 +5,70 @@ const currentSponsors = [
     {
         category: "Title Sponsor",
         icon: "star",
-        color: "text-yellow-500",
+        color: "text-blue-700",
         sponsors: [
-            { name: "Unstop", domain: "unstop.com", useSimpleIcon: false, imageUrl: "/unstop-logo.png" }
+            {
+                name: "Unstop",
+                imageUrl: "/sponsors/unstop_logo.png",
+                base: "bg-blue-800/30",
+                hover: "hover:bg-blue-700/80",
+                accent: "bg-blue-700",
+                shadow: "hover:shadow-[0_0_40px_rgba(29,78,137,0.3)]"
+            }
+        ]
+    },
+    {
+        category: "Associate Sponsors",
+        icon: "handshake",
+        color: "text-fuchsia-500",
+        sponsors: [
+            {
+                name: "Beeceptor",
+                imageUrl: "/sponsors/beeceptor_logo.png",
+                base: "bg-fuchsia-600/30",
+                hover: "hover:bg-fuchsia-500/80",
+                accent: "bg-fuchsia-500",
+                shadow: "hover:shadow-[0_0_40px_rgba(192,38,211,0.25)]"
+            },
+            {
+                name: "Interview Cake",
+                imageUrl: "/sponsors/interview_cake_logo.png",
+                base: "bg-cyan-500/30",
+                hover: "hover:bg-cyan-400/80",
+                accent: "bg-cyan-400",
+                shadow: "hover:shadow-[0_0_40px_rgba(34,211,238,0.25)]"
+            },
+            {
+                name: ".xyz",
+                imageUrl: "/sponsors/xyz_logo.png",
+                base: "bg-purple-900/40",
+                hover: "hover:bg-purple-800/80",
+                accent: "bg-purple-800",
+                shadow: "hover:shadow-[0_0_40px_rgba(107,33,168,0.3)]"
+            }
         ]
     },
     {
         category: "Sub Event Sponsors",
         icon: "event",
-        color: "text-pink-500",
+        color: "text-rose-500",
         sponsors: [
-            { name: "Zulip", domain: "zulip.com", useSimpleIcon: true, slug: "zulip" },
-            { name: "Appwrite", domain: "appwrite.io", useSimpleIcon: true, slug: "appwrite"}
+            {
+                name: "Appwrite",
+                imageUrl: "/sponsors/appwrite_logo.png",
+                base: "bg-rose-500/30",
+                hover: "hover:bg-rose-400/80",
+                accent: "bg-rose-400",
+                shadow: "hover:shadow-[0_0_40px_rgba(244,63,94,0.25)]"
+            },
+            {
+                name: "Zulip",
+                imageUrl: "/sponsors/zulip_logo.png",
+                base: "bg-indigo-500/30",
+                hover: "hover:bg-indigo-400/80",
+                accent: "bg-indigo-400",
+                shadow: "hover:shadow-[0_0_40px_rgba(99,102,241,0.25)]"
+            }
         ]
     }
 ];
@@ -28,10 +80,10 @@ export const Sponsors = () => {
                 <div>
                     <div className="text-xs font-mono text-primary tracking-widest mb-2 flex items-center gap-2">
                         <span className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse"></span>
-                        OUR // PARTNERS
+                        GRID // PARTNERS
                     </div>
                     <h2 className="text-4xl md:text-5xl font-black italic uppercase tracking-tighter text-white">
-                        Current <span className="text-stroke-white text-transparent">Sponsors</span>
+                        Sponsors
                     </h2>
                     <p className="text-gray-400 mt-2 max-w-2xl font-mono text-sm">
                         The organizations powering innovation at ByteVerse
@@ -41,12 +93,12 @@ export const Sponsors = () => {
 
             <div className="space-y-16">
                 {currentSponsors.map((group, i) => (
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0, y: 40 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: "-50px" }}
                         transition={{ duration: 0.6, ease: "easeOut" }}
-                        key={i} 
+                        key={i}
                         className="relative"
                     >
                         <div className="flex items-center gap-4 mb-8 border-b border-white/5 pb-4">
@@ -55,46 +107,40 @@ export const Sponsors = () => {
                             <div className="hidden md:block flex-grow h-[1px] bg-gradient-to-r from-white/10 to-transparent ml-4"></div>
                         </div>
 
-                        <div className={group.sponsors.length === 1 ? "flex items-center justify-start" : "grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"}>
+                        <div className={group.sponsors.length === 1 ? "flex items-center justify-start" : "grid grid-cols-2 lg:grid-cols-3 gap-6"}>
                             {group.sponsors.map((sponsor: any, j: number) => (
-                                <motion.div 
+                                <motion.div
                                     initial={{ opacity: 0, scale: 0.95 }}
                                     whileInView={{ opacity: 1, scale: 1 }}
                                     viewport={{ once: true }}
                                     whileHover={{ y: -5, scale: 1.02 }}
                                     transition={{ duration: 0.4, delay: j * 0.1 }}
-                                    key={sponsor.name} 
-                                    className={`group relative bg-carbon/50 backdrop-blur-sm border border-white/10 rounded-2xl p-8 flex flex-col items-center justify-center gap-6 transition-all duration-300 hover:border-white/30 hover:shadow-[0_0_40px_rgba(255,255,255,0.05)] overflow-hidden min-h-[180px] ${group.sponsors.length === 1 ? 'w-full max-w-[420px] md:min-h-[240px] shadow-[0_0_30px_rgba(234,179,8,0.05)] border-yellow-500/20' : ''}`}
+                                    key={sponsor.name}
+                                    className={`group relative p-[1px] shrink-0 transition-all duration-300 ${sponsor.shadow} ${sponsor.base} ${sponsor.hover} [clip-path:polygon(20px_0,100%_0,100%_calc(100%_-_20px),calc(100%_-_20px)_100%,0_100%,0_20px)] ${group.sponsors.length === 1 ? 'w-full max-w-[480px]' : ''}`}
                                 >
-                                    {/* Scanline overlay on hover */}
-                                    <div className="absolute inset-0 scanlines opacity-0 group-hover:opacity-10 pointer-events-none transition-opacity"></div>
-                                    
-                                    {/* Accent border highlight */}
-                                    <div className={`absolute top-0 left-0 w-full h-1 opacity-50 ${group.color.replace('text-', 'bg-')}`}></div>
+                                    <div className={`relative w-full h-full bg-white/95 backdrop-blur-md p-8 flex flex-col items-center justify-center gap-6 overflow-hidden min-h-[160px] [clip-path:polygon(20px_0,100%_0,100%_calc(100%_-_20px),calc(100%_-_20px)_100%,0_100%,0_20px)] ${group.sponsors.length === 1 ? 'md:min-h-[260px]' : ''}`}>
 
-                                    <img
-                                        src={
-                                            sponsor.imageUrl 
-                                            ? sponsor.imageUrl 
-                                            : sponsor.useSimpleIcon && sponsor.slug
-                                                ? `https://cdn.simpleicons.org/${sponsor.slug}`
-                                                : `https://img.logo.dev/${sponsor.domain}?token=pk_VZJykc4JQu6v2ZeJRBNNtA`
-                                        }
-                                        alt={sponsor.name}
-                                        className={`w-auto max-w-full object-contain filter drop-shadow-md transition-all duration-500 group-hover:drop-shadow-xl z-10 ${group.sponsors.length === 1 ? 'h-20 md:h-28' : 'h-14 md:h-16'}`}
-                                        onError={(e) => {
-                                            (e.target as HTMLImageElement).style.display = 'none';
-                                            (e.target as HTMLImageElement).nextElementSibling?.classList.remove('hidden');
-                                        }}
-                                    />
+                                        {/* Scanline overlay on hover */}
+                                        <div className="absolute inset-0 scanlines opacity-0 group-hover:opacity-5 pointer-events-none transition-opacity"></div>
 
-                                    {/* Fallback Initial */}
-                                    <div className="hidden w-16 h-16 rounded-full bg-white/5 items-center justify-center mb-2 group-hover:bg-white/10 transition-colors z-10">
-                                        <span className={`font-black text-2xl uppercase ${group.color}`}>{sponsor.name.charAt(0)}</span>
-                                    </div>
+                                        {/* Accent top/bottom highlights respecting the chamfered corners */}
+                                        <div className={`absolute top-0 left-[20px] w-[calc(100%-20px)] h-1 opacity-80 ${sponsor.accent}`}></div>
+                                        <div className={`absolute bottom-0 right-[20px] w-[calc(100%-20px)] h-1 opacity-80 ${sponsor.accent}`}></div>
 
-                                    <div className={`text-xs font-bold text-center text-gray-400 group-hover:text-white uppercase tracking-widest leading-relaxed z-10 ${group.sponsors.length === 1 ? 'text-sm' : ''}`}>
-                                        {sponsor.name}
+                                        <img
+                                            src={sponsor.imageUrl}
+                                            alt={sponsor.name}
+                                            className={`w-auto max-w-full object-contain filter transition-all duration-500 group-hover:drop-shadow-lg z-10 ${group.sponsors.length === 1 ? 'h-24 md:h-32' : 'h-16 md:h-20'}`}
+                                            onError={(e) => {
+                                                (e.target as HTMLImageElement).style.display = 'none';
+                                                (e.target as HTMLImageElement).nextElementSibling?.classList.remove('hidden');
+                                            }}
+                                        />
+
+                                        {/* Fallback Text if image fails */}
+                                        <div className="hidden text-xl md:text-2xl font-black italic text-center text-gray-800 uppercase tracking-widest z-10">
+                                            {sponsor.name}
+                                        </div>
                                     </div>
                                 </motion.div>
                             ))}

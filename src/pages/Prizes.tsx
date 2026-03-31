@@ -290,7 +290,7 @@ const TopDownCarCard = ({ rank, tier, prize, accentColor, glowColor, textColor, 
                 <div className={`absolute bottom-0 w-full bg-gradient-to-t from-black via-black/90 to-transparent p-6 z-30 pt-20`}>
                     <div className="flex justify-between items-end mb-4">
                         <div>
-                            <div className="text-gray-500 text-[10px] uppercase tracking-widest font-mono mb-1">Total Prize</div>
+                            <div className="text-gray-500 text-[10px] uppercase tracking-widest font-mono mb-1">Cash Prize</div>
                             <div className={`text-4xl font-bold font-mono tracking-tight text-white flex items-baseline gap-1`}>
                                 <span className="font-sans text-3xl font-normal opacity-80 mr-1">₹</span>
                                 <span>{prize.replace('₹', '').trim()}</span>

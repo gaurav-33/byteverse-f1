@@ -15,15 +15,15 @@ const TARGET_DATE = new Date('2026-04-11T10:00:00'); // ByteVerse: April 11, 202
 
 // Organizers data (arranged by position priority)
 const organizers = [
-    { name: 'Sonu Jhajharia', position: 'Community Lead', linkedin: 'https://www.linkedin.com/in/sonu-jhajharia-122a39285?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app', github: 'https://github.com/sonuj04', image: '/sonu.jpg' },
-    { name: 'Ravi Upadhyay', position: 'Vice President', linkedin: 'https://www.linkedin.com/in/raviupadhyay23', github: 'https://github.com/upadhyayravi023', image: '/ravi.jpg' },
-    { name: 'Ashutosh Panda', position: 'Administrative & AI/ML Lead', linkedin: 'https://www.linkedin.com/in/ashutosh-panda-63a478380', github: 'https://github.com/zen-zap', image: '/ashu.jpg' },
-    { name: 'Vasu Choudhari', position: 'Technical Lead / Secretary', linkedin: 'https://www.linkedin.com/in/vasu-choudhari', github: 'https://www.github.com/vasu-here', image: '/vasu.jpg' },
-    { name: 'Gaurav Suman', position: 'Flutter Lead (GDG)', linkedin: 'https://www.linkedin.com/in/gaurav-suman-baa84328a', github: 'https://www.github.com/gaurav-33', image: '/gaurav.jpg' },
-    { name: 'Shivendu Kumar', position: 'Event Lead (Patna Campus)', linkedin: 'https://www.linkedin.com/in/shivendu-kumar-5971112b9?utm_source=share_via&utm_content=profile&utm_medium=member_android', github: 'https://github.com/ShivenduKmr', image: '/shivendu.jpg' },
-    { name: 'Sanjeet Raj', position: 'Web Lead', linkedin: 'https://www.linkedin.com/in/Sanjeetraj40/', github: 'https://github.com/Sanjeet4567', image: '/sanjeet.jpeg' },
-    { name: 'Suryakant Acharya', position: 'Co-Lead (Gray Interface)', linkedin: 'https://www.linkedin.com/in/suryakant-acharya-8b09a628a', github: 'https://github.com/Suryakant2112', image: '/surya.jpg' },
-    { name: 'Tanay Palekar', position: 'Lead, Team Nougat', linkedin: 'https://www.linkedin.com/in/palekar-tanay-80b0a428b', github: 'https://github.com/tanay4768', image: '/tanay.jpg' }
+    { name: 'Sonu Jhajharia', position: 'Community Lead', linkedin: 'https://www.linkedin.com/in/sonu-jhajharia-122a39285?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app', github: 'https://github.com/sonuj04', image: 'leads/sonu.jpg' },
+    { name: 'Ravi Upadhyay', position: 'Vice President', linkedin: 'https://www.linkedin.com/in/raviupadhyay23', github: 'https://github.com/upadhyayravi023', image: 'leads/ravi.jpg' },
+    { name: 'Ashutosh Panda', position: 'Administrative & AI/ML Lead', linkedin: 'https://www.linkedin.com/in/ashutosh-panda-63a478380', github: 'https://github.com/zen-zap', image: 'leads/ashu.jpg' },
+    { name: 'Vasu Choudhari', position: 'Technical Lead / Secretary', linkedin: 'https://www.linkedin.com/in/vasu-choudhari', github: 'https://www.github.com/vasu-here', image: 'leads/vasu.jpg' },
+    { name: 'Gaurav Suman', position: 'Flutter Lead (GDG)', linkedin: 'https://www.linkedin.com/in/gaurav-suman-baa84328a', github: 'https://www.github.com/gaurav-33', image: 'leads/gaurav.jpg' },
+    { name: 'Shivendu Kumar', position: 'Event Lead (Patna Campus)', linkedin: 'https://www.linkedin.com/in/shivendu-kumar-5971112b9?utm_source=share_via&utm_content=profile&utm_medium=member_android', github: 'https://github.com/ShivenduKmr', image: 'leads/shivendu.jpg' },
+    { name: 'Sanjeet Raj', position: 'Web Lead', linkedin: 'https://www.linkedin.com/in/Sanjeetraj40/', github: 'https://github.com/Sanjeet4567', image: 'leads/sanjeet.jpeg' },
+    { name: 'Suryakant Acharya', position: 'Co-Lead (Gray Interface)', linkedin: 'https://www.linkedin.com/in/suryakant-acharya-8b09a628a', github: 'https://github.com/Suryakant2112', image: 'leads/surya.jpg' },
+    { name: 'Tanay Palekar', position: 'Lead, Team Nougat', linkedin: 'https://www.linkedin.com/in/palekar-tanay-80b0a428b', github: 'https://github.com/tanay4768', image: 'leads/tanay.jpg' }
 ];
 
 import { Sponsors } from '../components/Sponsors';
