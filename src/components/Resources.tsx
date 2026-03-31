@@ -14,7 +14,7 @@ export const Resources = () => {
         {
             title: "Idea PPT",
             sub: "Telemetry Deck",
-            url: "https://bit.ly/Byteverse-8",
+            url: "https://drive.google.com/drive/folders/1i_p3Av-__IVAnjXvC5ZFoUTQmc53lKGh?usp=sharing",
             icon: "co_present",
             accent: "group-hover:border-yellow-500 group-hover:bg-yellow-500/10 group-hover:shadow-[0_0_20px_rgba(234,179,8,0.15)]",
             textHover: "group-hover:text-yellow-400",
@@ -70,11 +70,11 @@ export const Resources = () => {
                     >
                         {/* Background scanlines */}
                         <div className="absolute inset-0 scanlines opacity-20 group-hover:opacity-40 mix-blend-overlay pointer-events-none transition-opacity"></div>
-                        
+
                         {/* Status Blinker */}
                         <div className="absolute top-3 left-4 flex items-center gap-2 opacity-60 group-hover:opacity-100 transition-opacity">
                             <span className={`w-1.5 h-1.5 rounded-full animate-pulse bg-current ${res.iconColor}`}></span>
-                            <span className="text-[9px] font-mono tracking-widest text-gray-500 uppercase">LINK 0{i+1}</span>
+                            <span className="text-[9px] font-mono tracking-widest text-gray-500 uppercase">LINK 0{i + 1}</span>
                         </div>
 
                         {/* Icon */}
