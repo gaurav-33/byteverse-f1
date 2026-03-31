@@ -2,34 +2,55 @@ import { useState } from 'react';
 import { Link, useLocation } from 'wouter';
 
 export const NavBar = () => {
-    const [location] = useLocation();
+    const [, setLocation] = useLocation();
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
     const toggleMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+
+    const handleNav = (e: React.MouseEvent, hash: string, isMobile: boolean, path: string = '/') => {
+        e.preventDefault();
+        if (isMobile) setIsMobileMenuOpen(false);
+
+        if (window.location.pathname !== path) {
+            setLocation(path);
+            if (hash) {
+                setTimeout(() => {
+                    document.getElementById(hash)?.scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+            }
+        } else if (hash) {
+            document.getElementById(hash)?.scrollIntoView({ behavior: 'smooth' });
+        } else {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    };
+
+    const getLinkClass = (isMobile: boolean) => {
+        return `uppercase tracking-widest transition-all cursor-pointer ${isMobile
+                ? 'text-sm font-bold py-3 px-4 w-full text-center hover:bg-white/5 rounded-xl border border-transparent hover:border-white/5 text-gray-300 hover:text-white'
+                : 'px-3 lg:px-4 xl:px-5 py-2 text-sm rounded-full text-gray-300 hover:text-white hover:bg-white/10'
+            }`;
+    };
 
     const NavLinks = ({ mobile = false }) => (
         <>
-            <Link href="/tracks" className={`uppercase tracking-widest transition-all ${mobile ? 'text-sm font-bold py-3 px-4 w-full text-center hover:bg-white/5 rounded-xl border border-transparent hover:border-white/5' : 'px-3 lg:px-4 xl:px-5 py-2 text-sm rounded-full'} ${location === '/tracks' ? (mobile ? 'text-primary bg-white/5 border-white/5' : 'text-white bg-white/10') : 'text-gray-300 hover:text-white hover:bg-white/10'}`} onClick={() => mobile && setIsMobileMenuOpen(false)}>
+            <a onClick={(e) => handleNav(e, 'tracks', mobile)} className={getLinkClass(mobile)}>
                 Tracks
-            </Link>
-            <Link href="/schedule" className={`uppercase tracking-widest transition-all ${mobile ? 'text-sm font-bold py-3 px-4 w-full text-center hover:bg-white/5 rounded-xl border border-transparent hover:border-white/5' : 'px-3 lg:px-4 xl:px-5 py-2 text-sm rounded-full'} ${location === '/schedule' ? (mobile ? 'text-primary bg-white/5 border-white/5' : 'text-white bg-white/10') : 'text-gray-300 hover:text-white hover:bg-white/10'}`} onClick={() => mobile && setIsMobileMenuOpen(false)}>
+            </a>
+            <a onClick={(e) => handleNav(e, 'schedule', mobile)} className={getLinkClass(mobile)}>
                 Schedule
-            </Link>
-            <Link href="/prizes" className={`uppercase tracking-widest transition-all ${mobile ? 'text-sm font-bold py-3 px-4 w-full text-center hover:bg-white/5 rounded-xl border border-transparent hover:border-white/5' : 'px-3 lg:px-4 xl:px-5 py-2 text-sm rounded-full'} ${location === '/prizes' ? (mobile ? 'text-primary bg-white/5 border-white/5' : 'text-white bg-white/10') : 'text-gray-300 hover:text-white hover:bg-white/10'}`} onClick={() => mobile && setIsMobileMenuOpen(false)}>
+            </a>
+            <a onClick={(e) => handleNav(e, 'prizes', mobile)} className={getLinkClass(mobile)}>
                 Prizes
-            </Link>
-            <Link href="/pit-crew" className={`uppercase tracking-widest transition-all ${mobile ? 'text-sm font-bold py-3 px-4 w-full text-center hover:bg-white/5 rounded-xl border border-transparent hover:border-white/5' : 'px-3 lg:px-4 xl:px-5 py-2 text-sm rounded-full'} ${location === '/pit-crew' ? (mobile ? 'text-primary bg-white/5 border-white/5' : 'text-white bg-white/10') : 'text-gray-300 hover:text-white hover:bg-white/10'}`} onClick={() => mobile && setIsMobileMenuOpen(false)}>
+            </a>
+            <Link href="/pit-crew" className={getLinkClass(mobile)} onClick={() => mobile && setIsMobileMenuOpen(false)}>
                 Pit Crew
             </Link>
-            <Link href="/gallery" className={`uppercase tracking-widest transition-all ${mobile ? 'text-sm font-bold py-3 px-4 w-full text-center hover:bg-white/5 rounded-xl border border-transparent hover:border-white/5' : 'px-3 lg:px-4 xl:px-5 py-2 text-sm rounded-full'} ${location === '/gallery' ? (mobile ? 'text-primary bg-white/5 border-white/5' : 'text-white bg-white/10') : 'text-gray-300 hover:text-white hover:bg-white/10'}`} onClick={() => mobile && setIsMobileMenuOpen(false)}>
+            <Link href="/gallery" className={getLinkClass(mobile)} onClick={() => mobile && setIsMobileMenuOpen(false)}>
                 Gallery
             </Link>
-            <Link href="/about" className={`uppercase tracking-widest transition-all ${mobile ? 'text-sm font-bold py-3 px-4 w-full text-center hover:bg-white/5 rounded-xl border border-transparent hover:border-white/5' : 'px-3 lg:px-4 xl:px-5 py-2 text-sm rounded-full'} ${location === '/about' ? (mobile ? 'text-primary bg-white/5 border-white/5' : 'text-white bg-white/10') : 'text-gray-300 hover:text-white hover:bg-white/10'}`} onClick={() => mobile && setIsMobileMenuOpen(false)}>
+            <a onClick={(e) => handleNav(e, 'about', mobile)} className={getLinkClass(mobile)}>
                 About
-            </Link>
-            {/* <Link href="/sponsors" className={`uppercase tracking-widest transition-all ${mobile ? 'text-sm font-bold py-3 px-4 w-full text-center hover:bg-primary/20 rounded-xl border border-primary/20 hover:border-primary/50 text-white' : 'px-3 lg:px-4 xl:px-5 py-2 text-sm rounded-full border border-primary/30 hover:bg-primary/20 text-primary hover:text-white'} ${location === '/sponsors' ? (mobile ? 'bg-primary/20 border-primary' : 'bg-primary/20') : ''}`} onClick={() => mobile && setIsMobileMenuOpen(false)}>
-                Sponsors
-            </Link> */}
+            </a>
         </>
     );
 

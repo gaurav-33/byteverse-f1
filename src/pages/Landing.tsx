@@ -3,6 +3,12 @@ import { motion } from 'framer-motion';
 import { Link } from 'wouter';
 import Organizers from '../components/organisors';
 import F1CarTicker from '../components/F1CarTicker';
+import { About } from './About';
+import { QuoteBlock } from '../components/QuoteBlock';
+import { Tracks } from './Tracks';
+import { Schedule } from './Schedule';
+import { Prizes } from './Prizes';
+import { Resources } from '../components/Resources';
 
 // Custom Date and Time for the Countdown
 const TARGET_DATE = new Date('2026-04-11T10:00:00'); // ByteVerse: April 11, 2026, 10:00 AM
@@ -50,9 +56,25 @@ export const Landing = () => {
     });
 
     // Starting Lights State
-    const [lights, setLights] = useState([false, false, false, false, false]);
-    const [lightsOut, setLightsOut] = useState(false);
-    const [heroVisible, setHeroVisible] = useState(false);
+    const [hasPlayedInitial] = useState(() => {
+        if (typeof window !== 'undefined') {
+            const storedTime = sessionStorage.getItem('loadingAnimationTime');
+            if (storedTime) {
+                // The second argument to parseInt is the base/radix (10 for decimal), not the minutes limit!
+                const timePassed = Date.now() - parseInt(storedTime, 10);
+                // IF less than 3 minutes (180,000 ms) have passed, skip the animation
+                if (timePassed < 3 * 60 * 1000) {
+                    return true;
+                }
+            }
+            return false;
+        }
+        return false;
+    });
+
+    const [lights, setLights] = useState(hasPlayedInitial ? [true, true, true, true, true] : [false, false, false, false, false]);
+    const [lightsOut, setLightsOut] = useState(hasPlayedInitial);
+    const [heroVisible, setHeroVisible] = useState(hasPlayedInitial);
 
     useEffect(() => {
         // Countdown Timer Logic
@@ -72,29 +94,33 @@ export const Landing = () => {
         const timer = setInterval(calculateTimeLeft, 1000);
         calculateTimeLeft();
 
-        // Starting Lights Sequence Animation
-        // Sequence: 1s interval for each light, then random pause, then out
-        const sequence = async () => {
-            for (let i = 0; i < 5; i++) {
-                await new Promise(r => setTimeout(r, 800));
-                setLights(prev => {
-                    const newLights = [...prev];
-                    newLights[i] = true;
-                    return newLights;
-                });
-            }
-            // Hold for random time between 0.2s and 3s (F1 regulation style)
-            await new Promise(r => setTimeout(r, 1000 + Math.random() * 2000));
-            setLightsOut(true); // LIGHTS OUT!
+        if (!hasPlayedInitial) {
+            // Starting Lights Sequence Animation
+            const sequence = async () => {
+                for (let i = 0; i < 5; i++) {
+                    await new Promise(r => setTimeout(r, 800));
+                    setLights(prev => {
+                        const newLights = [...prev];
+                        newLights[i] = true;
+                        return newLights;
+                    });
+                }
+                // Hold for random time between 0.2s and 3s (F1 regulation style)
+                await new Promise(r => setTimeout(r, 1000 + Math.random() * 2000));
+                setLightsOut(true); // LIGHTS OUT!
 
-            // Show Hero Content shortly after
-            setTimeout(() => setHeroVisible(true), 500);
-        };
+                // Show Hero Content shortly after
+                setTimeout(() => {
+                    setHeroVisible(true);
+                    sessionStorage.setItem('loadingAnimationTime', Date.now().toString());
+                }, 500);
+            };
 
-        sequence();
+            sequence();
+        }
 
         return () => clearInterval(timer);
-    }, []);
+    }, [hasPlayedInitial]);
 
     const formatTime = (value: number) => value.toString().padStart(2, '0');
 
@@ -103,38 +129,48 @@ export const Landing = () => {
     return (
         <div className="font-display bg-asphalt text-white min-h-screen overflow-x-hidden flex flex-col relative selection:bg-primary selection:text-white">
 
-            {/* Background Layers */}
-            <div className="fixed inset-0 bg-carbon-fiber opacity-60 z-0 pointer-events-none"></div>
-            <div className="fixed inset-0 bg-gradient-to-t from-asphalt via-transparent to-transparent z-0 pointer-events-none"></div>
-            <div className="fixed inset-0 scanlines z-10 pointer-events-none opacity-20"></div>
+            {/* Global Base Background */}
+            <div className="fixed inset-0 bg-[#0a0a0c] z-0 pointer-events-none"></div>
 
-            {/* Abstract F1 Wireframe Background - Only visible after lights out */}
-            <div className={`fixed inset-0 z-0 overflow-hidden flex items-center justify-center pointer-events-none transition-opacity duration-1000 ${heroVisible ? 'opacity-100' : 'opacity-0'}`}>
-                <div className="relative w-full h-full max-w-7xl mx-auto opacity-30 mt-32 scale-110">
-                    <img
-                        alt="Abstract glowing cyan wireframe of a Formula 1 car"
-                        className="w-full h-full object-contain mix-blend-screen opacity-60 animate-pulse-glow"
-                        src="/f1_bg.png"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-b from-asphalt via-transparent to-asphalt"></div>
+            {/* Hero Section Specific Backgrounds */}
+            <div className="absolute top-0 left-0 right-0 h-[120vh] z-0 pointer-events-none overflow-hidden">
+                <div className="absolute inset-0 bg-carbon-fiber opacity-60"></div>
+                <div className="absolute inset-0 scanlines opacity-20 mask-image-b from-black to-transparent"></div>
+
+                {/* Abstract F1 Wireframe Background - Only visible after lights out */}
+                <div className={`absolute inset-0 flex items-center justify-center transition-opacity duration-1000 ${heroVisible ? 'opacity-100' : 'opacity-0'}`}>
+                    <div className="relative w-full h-full max-w-7xl mx-auto opacity-30 mt-32 scale-110">
+                        <img
+                            alt="Abstract glowing cyan wireframe of a Formula 1 car"
+                            className="w-full h-full object-contain mix-blend-screen opacity-60 animate-pulse-glow"
+                            src="/f1_bg.png"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0a0a0c] translate-y-20"></div>
+                        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0c]/80 via-transparent to-transparent"></div>
+                    </div>
                 </div>
+
+                {/* Fade out to the rest of the site */}
+                <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-[#0a0a0c] to-transparent"></div>
             </div>
 
             {/* STARTING LIGHTS OVERLAY */}
             {/* Only visible before "lights out" triggers content reveal */}
-            <div className={`fixed inset-0 z-50 flex flex-col items-center justify-center bg-asphalt transition-opacity duration-1000 pointer-events-none ${lightsOut ? 'opacity-0' : 'opacity-100'}`}>
-                <div className="flex gap-4 md:gap-8 bg-black/50 p-8 rounded-2xl border border-white/10 backdrop-blur-xl shadow-2xl">
-                    {lights.map((isOn, i) => (
-                        <div key={i} className={`w-12 h-12 md:w-16 md:h-16 rounded-full border-4 border-black transition-all duration-100 ${isOn && !lightsOut ? 'bg-red-600 shadow-[0_0_50px_rgba(220,38,38,1)] scale-110' : 'bg-gray-900'}`}></div>
-                    ))}
-                </div>
-                <div className="mt-8 font-mono text-xs text-gray-500 tracking-[0.5em] animate-pulse">BYTEVERSE LOADING...</div>
+            {!hasPlayedInitial && (
+                <div className={`fixed inset-0 z-50 flex flex-col items-center justify-center bg-asphalt transition-opacity duration-1000 pointer-events-none ${lightsOut ? 'opacity-0' : 'opacity-100'}`}>
+                    <div className="flex gap-4 md:gap-8 bg-black/50 p-8 rounded-2xl border border-white/10 backdrop-blur-xl shadow-2xl">
+                        {lights.map((isOn, i) => (
+                            <div key={i} className={`w-12 h-12 md:w-16 md:h-16 rounded-full border-4 border-black transition-all duration-100 ${isOn && !lightsOut ? 'bg-red-600 shadow-[0_0_50px_rgba(220,38,38,1)] scale-110' : 'bg-gray-900'}`}></div>
+                        ))}
+                    </div>
+                    <div className="mt-8 font-mono text-xs text-gray-500 tracking-[0.5em] animate-pulse">BYTEVERSE LOADING...</div>
 
-                {/* Car animation during loading */}
-                <div className="absolute bottom-0 left-0 right-0">
-                    <F1CarTicker speed={3} height={100} />
+                    {/* Car animation during loading */}
+                    <div className="absolute bottom-0 left-0 right-0">
+                        <F1CarTicker speed={3} height={100} />
+                    </div>
                 </div>
-            </div>
+            )}
 
 
             {/* Main Hero Content - Reveals after lights out */}
@@ -201,6 +237,8 @@ export const Landing = () => {
 
             </main>
 
+            <About />
+            <Resources />
             <Organizers />
 
             {/* Organizers Carousel */}
@@ -256,61 +294,16 @@ export const Landing = () => {
                 </div>
             </section>
 
-            {/* --- CURRENT SPONSORS SECTION --- */}
-            <section className="relative z-20 w-full min-w-0 max-w-7xl mx-auto px-6 py-12">
-                <div className="mb-8 flex items-center justify-between">
-                    <div>
-                        <div className="text-xs font-mono text-primary tracking-widest mb-2">OUR // PARTNERS</div>
-                        <h2 className="text-4xl font-black italic uppercase">Current Sponsors</h2>
-                        <p className="text-gray-400 mt-2 max-w-2xl">The organizations powering innovation at ByteVerse</p>
-                    </div>
-                </div>
 
-                <div className="space-y-16">
-                    {currentSponsors.map((group, i) => (
-                        <div key={i} className="relative">
-                            <div className="flex items-center gap-3 mb-8">
-                                <span className={`material-icons text-3xl ${group.color}`}>{group.icon}</span>
-                                <h3 className="text-2xl md:text-3xl font-black italic uppercase text-white">{group.category}</h3>
-                            </div>
-
-                            <div className={group.sponsors.length === 1 ? "flex items-center" : "grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"}>
-                                {/* Added explicit 'any' type to avoid TS errors without changing external array types */}
-                                {group.sponsors.map((sponsor: any) => (
-                                    <div 
-                                        key={sponsor.name} 
-                                        className={`group relative bg-carbon border border-white/10 rounded-xl p-6 flex flex-col items-center justify-center gap-5 hover:border-white/30 transition-all duration-300 hover:-translate-y-1 min-h-[160px] ${group.sponsors.length === 1 ? 'w-full max-w-[340px] md:min-h-[200px]' : ''}`}
-                                    >
-                                        <img
-                                            src={
-                                                sponsor.imageUrl 
-                                                ? sponsor.imageUrl 
-                                                : sponsor.useSimpleIcon && sponsor.slug
-                                                    ? `https://cdn.simpleicons.org/${sponsor.slug}`
-                                                    : `https://img.logo.dev/${sponsor.domain}?token=pk_VZJykc4JQu6v2ZeJRBNNtA`
-                                            }
-                                            alt={sponsor.name}
-                                            className={`w-auto max-w-full object-contain transition-all duration-300 ${group.sponsors.length === 1 ? 'h-16 md:h-20' : 'h-12'}`}
-                                            onError={(e) => {
-                                                (e.target as HTMLImageElement).style.display = 'none';
-                                                (e.target as HTMLImageElement).nextElementSibling?.classList.remove('hidden');
-                                            }}
-                                        />
-
-                                        <div className="hidden w-12 h-12 rounded-full bg-white/5 items-center justify-center mb-2 group-hover:bg-white/10 transition-colors">
-                                            <span className={`font-black text-xl uppercase ${group.color}`}>{sponsor.name.charAt(0)}</span>
-                                        </div>
-
-                                        <div className={`text-xs font-bold text-center text-gray-400 group-hover:text-white uppercase tracking-widest leading-relaxed ${group.sponsors.length === 1 ? 'text-sm' : ''}`}>
-                                            {sponsor.name}
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    ))}
-                </div>
+            <section className="relative z-20 w-full max-w-7xl mx-auto px-6 py-12 mb-12">
+                <QuoteBlock quote={"Byteverse is where ideas meet build — ship something you believe in and learn along the way."}
+                    author={"Hackslash Team"}
+                    sub={"Developer's Club, NIT Patna"} />
             </section>
+
+            <Tracks />
+            <Schedule />
+            <Prizes />
 
             {/* Bottom Telemetry & Ticker */}
             <footer className={`relative z-20 w-full bg-carbon/90 border-t border-white/5 backdrop-blur-lg mt-auto transition-all duration-1000 delay-500 ${heroVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}`}>

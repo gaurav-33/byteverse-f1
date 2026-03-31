@@ -136,15 +136,26 @@ export const Schedule = () => {
 
 
     return (
-        <section className="relative min-h-screen bg-asphalt text-white py-24 overflow-hidden font-display">
-            {/* Background Layers */}
-            <div className="fixed inset-0 bg-carbon-fiber opacity-40 z-0 pointer-events-none"></div>
-            <div className="fixed inset-0 scanlines z-10 pointer-events-none opacity-20"></div>
+        <section id="schedule" className="relative text-white py-24 font-display overflow-hidden">
+            
+            {/* Layout Background - Asphalt & Speedlines */}
+            <div className="absolute inset-0 pointer-events-none z-0">
+                <div className="absolute inset-0 bg-[#0a0a0c]"></div>
+                
+                {/* Diagonal racing stripes */}
+                <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 20px, #ffffff 20px, #ffffff 40px)' }}></div>
+                
+                {/* Horizontal motion lines (asphalt texture speed) */}
+                <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[length:100%_8px]"></div>
 
-            {/* Ambient Glow */}
-            <div className="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-[500px] bg-primary/10 blur-[100px] pointer-events-none z-0"></div>
+                {/* Vertical fades */}
+                <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-[#0a0a0c] to-transparent"></div>
+                <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#0a0a0c] to-transparent"></div>
+                
+                <div className="absolute inset-0 scanlines opacity-10"></div>
+            </div>
 
-            <main className="relative z-30 max-w-7xl mx-auto px-6">
+            <main className="relative z-10 max-w-7xl mx-auto px-6">
 
                 {/* Header - Pit Board Style */}
                 <div className="relative flex flex-col md:flex-row items-center md:items-end justify-between mb-16 pb-10 text-center md:text-left">
@@ -171,29 +182,7 @@ export const Schedule = () => {
                     </div>
                 </div>
 
-                {/* Race Resources */}
-                <div className="flex flex-wrap gap-3 mb-12 justify-center md:justify-start">
-                    <a href="https://drive.google.com/file/d/1dgOf2QOxlISb9TkfMV_Gps0bq2GxM5Xd/view" target="_blank" rel="noreferrer"
-                        className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-white font-mono text-xs uppercase tracking-widest font-bold transition-all hover:shadow-[0_0_20px_rgba(255,30,0,0.5)] [clip-path:polygon(10px_0,100%_0,100%_calc(100%-10px),calc(100%-10px)_100%,0_100%,0_10px)]">
-                        <span className="material-icons text-sm">description</span>
-                        Rulebook PDF
-                    </a>
-                    <a href="https://unstop.com/hackathons/byteverse-80-hackathon-national-institute-of-technology-nit-patna-1658744" target="_blank" rel="noreferrer"
-                        className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/5 border border-white/20 hover:border-primary text-white font-mono text-xs uppercase tracking-widest font-bold transition-all [clip-path:polygon(10px_0,100%_0,100%_calc(100%-10px),calc(100%-10px)_100%,0_100%,0_10px)]">
-                        <span className="material-icons text-sm">how_to_reg</span>
-                        Register on Unstop
-                    </a>
-                    <a href="https://drive.google.com/drive/folders/1i_p3Av-__IVAnjXvC5ZFoUTQmc53lKGh?usp=sharing" target="_blank" rel="noreferrer"
-                        className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/5 border border-white/20 hover:border-white text-white font-mono text-xs uppercase tracking-widest font-bold transition-all [clip-path:polygon(10px_0,100%_0,100%_calc(100%-10px),calc(100%-10px)_100%,0_100%,0_10px)]">
-                        <span className="material-icons text-sm">slideshow</span>
-                        PPT Template
-                    </a>
-                    <a href="https://discord.com/invite/2ZfsdkTKh" target="_blank" rel="noreferrer"
-                        className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/5 border border-white/20 hover:border-[#5865F2] text-white font-mono text-xs uppercase tracking-widest font-bold transition-all [clip-path:polygon(10px_0,100%_0,100%_calc(100%-10px),calc(100%-10px)_100%,0_100%,0_10px)]">
-                        <span className="material-icons text-sm">forum</span>
-                        Discord
-                    </a>
-                </div>
+
 
                 {/* Timeline Container */}
                 <div className="relative" ref={containerRef}>

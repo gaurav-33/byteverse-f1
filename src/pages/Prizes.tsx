@@ -5,12 +5,25 @@ import F1CarTicker from '../components/F1CarTicker';
 
 export const Prizes = () => {
     return (
-        <section className="relative min-h-screen bg-asphalt text-white py-24 overflow-hidden font-display selection:bg-neon-cyan selection:text-black">
+        <section id="prizes" className="relative text-white py-24 font-display overflow-hidden">
 
-            {/* 1. Background Ambience */}
-            <div className="fixed inset-0 pointer-events-none z-0">
-                <div className="absolute inset-0 bg-carbon-fiber opacity-60"></div>
-                <div className="absolute top-0 right-0 w-3/4 h-full bg-gradient-to-l from-primary/5 to-transparent skew-x-[-12deg]"></div>
+            {/* Podium Background Layer */}
+            <div className="absolute inset-0 pointer-events-none z-0">
+                <div className="absolute inset-0 bg-[#0a0a0c]"></div>
+
+                {/* Checkered flag overlay spanning the entire section */}
+                <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'conic-gradient(#fff 90deg, transparent 90deg 180deg, #fff 180deg 270deg, transparent 270deg)', backgroundSize: '100px 100px' }}></div>
+
+                {/* Radial Spotlights for a Podium Effect */}
+                <div className="absolute bottom-[-20%] left-1/2 -translate-x-1/2 w-[80%] h-[80%] bg-[radial-gradient(ellipse_at_bottom,_rgba(234,179,8,0.1),_transparent_60%)]"></div>
+                <div className="absolute bottom-[20%] left-1/2 -translate-x-[150%] w-[40%] h-[40%] bg-[radial-gradient(ellipse_at_center,_rgba(156,163,175,0.05),_transparent_70%)]"></div>
+                <div className="absolute bottom-[20%] right-1/2 translate-x-[150%] w-[40%] h-[40%] bg-[radial-gradient(ellipse_at_center,_rgba(220,38,38,0.05),_transparent_70%)]"></div>
+
+                {/* Vertical fades */}
+                <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-[#0a0a0c] to-transparent"></div>
+                <div className="absolute bottom-0 left-0 w-full h-[50vh] bg-gradient-to-t from-[#0a0a0c] via-[#0a0a0c]/80 to-transparent"></div>
+
+                <div className="absolute inset-0 scanlines opacity-10 drop-shadow-md"></div>
             </div>
 
             <main className="relative z-10 max-w-7xl mx-auto px-6 flex flex-col items-center">
@@ -52,10 +65,15 @@ export const Prizes = () => {
                         textColor="text-yellow-400"
                         glowBg="bg-yellow-500"
                         carImage="/car-gold.png"
-                        height="h-[620px]"
+                        height="h-[680px]"
                         delay={0}
                         isWinner={true}
-                        perks={["Gold Trophy", "Cash Prize", "Exclusive Winner Kit"]}
+                        perks={[
+                            ".xyz domain names (1 yr free)",
+                            "1 yr Beeceptor Team Plan ($300)",
+                            "7 days Interview Cake course ($50)",
+                            "1 yr Zulip Cloud Standard ($90)"
+                        ]}
                     />
                     <TopDownCarCard
                         rank="P2"
@@ -64,12 +82,17 @@ export const Prizes = () => {
                         accentColor="border-gray-400"
                         glowColor="shadow-[0_0_40px_rgba(156,163,175,0.3)]"
                         textColor="text-gray-300"
-                        glowBg="bg-gray-100" // Brighter white/gray for glow
+                        glowBg="bg-gray-100"
                         carImage="/car-silver.png"
-                        height="h-[560px]"
+                        height="h-[620px]"
                         delay={0.2}
                         scale={0.85}
-                        perks={["Silver Medal", "Cash Prize", "ByteVerse Swag Kit"]}
+                        perks={[
+                            ".xyz domain names (1 yr free)",
+                            "1 yr Beeceptor Team Plan ($300)",
+                            "7 days Interview Cake course ($50)",
+                            "1 yr Zulip Cloud Standard ($90)"
+                        ]}
                     />
 
                     <TopDownCarCard
@@ -79,14 +102,22 @@ export const Prizes = () => {
                         accentColor="border-red-600"
                         glowColor="shadow-[0_0_40px_rgba(220,38,38,0.4)]"
                         textColor="text-red-500"
-                        glowBg="bg-red-600" // Strong red for glow
+                        glowBg="bg-red-600"
                         carImage="/car-bronze.png"
-                        height="h-[520px]"
+                        height="h-[580px]"
                         delay={0.4}
                         scale={0.8}
-                        perks={["Bronze Medal", "Cash Prize", "ByteVerse Swag Kit"]}
+                        perks={[
+                            ".xyz domain names (1 yr free)",
+                            "1 yr Beeceptor Team Plan ($300)",
+                            "7 days Interview Cake course ($50)",
+                            "1 yr Zulip Cloud Standard ($90)"
+                        ]}
                     />
+                </div>
 
+                {/* Special Classes Podium */}
+                <div className="w-full max-w-5xl relative flex flex-col lg:flex-row items-center justify-center gap-4 lg:gap-6 perspective-1000 mt-12">
                     <TopDownCarCard
                         rank="GIRLS"
                         tier="SPECIAL CLASS"
@@ -96,14 +127,29 @@ export const Prizes = () => {
                         textColor="text-pink-400"
                         glowBg="bg-pink-500"
                         carImage="/car-pink.png"
-                        height="h-[480px]"
+                        height="h-[500px]"
                         isWinner={true}
                         winnerColor="pink"
                         delay={0.6}
                         scale={0.75}
-                        perks={["Best All-Girls Crew", "Special Edition Livery"]}
+                        perks={["Best All-Girls Crew"]}
                     />
-
+                    <TopDownCarCard
+                        rank="ROOKIES"
+                        tier="1ST YEAR CLASS"
+                        prize="₹ 4,000"
+                        accentColor="border-cyan-500"
+                        glowColor="shadow-[0_0_40px_rgba(6,182,212,0.4)]"
+                        textColor="text-cyan-400"
+                        glowBg="bg-cyan-500"
+                        carImage="/car-silver.png" // Using silver as a fallback if car-cyan.png doesn't exist
+                        height="h-[500px]"
+                        isWinner={true}
+                        winnerColor="cyan"
+                        delay={0.8}
+                        scale={0.75}
+                        perks={["Best 1st Year Team"]}
+                    />
                 </div>
 
                 {/* 4. Special Awards & Regulations - Paddock Rules */}
@@ -117,35 +163,31 @@ export const Prizes = () => {
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {/* Special Awards Box */}
-                        <div className="bg-black/40 border border-white/10 p-8 rounded-xl backdrop-blur-md relative overflow-hidden group hover:border-yellow-500/30 transition-all">
+                        {/* Offline Participant Rewards */}
+                        <div className="bg-black/40 border border-white/10 p-8 rounded-xl backdrop-blur-md relative overflow-hidden group hover:border-yellow-500/30 transition-all flex flex-col">
                             <div className="absolute top-0 left-0 w-1 h-full bg-yellow-500 opacity-50"></div>
-                            <div className="flex items-start gap-4 mb-6">
-                                <span className="material-icons text-yellow-500">stars</span>
-                                <h3 className="font-bold text-lg tracking-widest text-white uppercase italic">Special Sector Awards</h3>
+                            <div className="flex items-start gap-4 mb-6 relative z-10">
+                                <span className="material-icons text-yellow-500">military_tech</span>
+                                <h3 className="font-bold text-lg tracking-widest text-white uppercase italic">Offline Participants</h3>
                             </div>
-                            <div className="space-y-6">
-                                <div className="space-y-2">
-                                    <div className="text-[10px] font-mono text-yellow-500 uppercase tracking-widest flex items-center gap-1">
-                                        <span>TOP ALL-GIRLS TEAM — </span><span className="font-sans text-[11px]">₹</span><span> 4,000</span>
-                                    </div>
-                                    <p className="text-xs text-gray-400 leading-relaxed font-mono">
-                                        Awarded to the fastest all-female crew. <span className="text-white/60 italic">Condition: Min. 20 all-girls teams must submit their final hack.</span>
-                                    </p>
-                                </div>
-                                <div className="space-y-2">
-                                    <div className="text-[10px] font-mono text-yellow-500 uppercase tracking-widest flex items-center gap-1">
-                                        <span>TOP ALL-1ST YEAR TEAM — </span><span className="font-sans text-[11px]">₹</span><span> 4,000</span>
-                                    </div>
-                                    <p className="text-xs text-gray-400 leading-relaxed font-mono">
-                                        Awarded to the highest performing 1st-year rookies. <span className="text-white/60 italic">Condition: Min. 10 all-1st-year teams must submit their final hack.</span>
-                                    </p>
-                                </div>
-                                <div className="pt-4 border-t border-white/5">
-                                    <p className="text-[10px] text-gray-500 italic">
-                                        *Both special awards are independent of overall podium positions.
-                                    </p>
-                                </div>
+                            <div className="space-y-4 relative z-10">
+                                <p className="text-xs text-gray-400 leading-relaxed font-mono mb-4">
+                                    Rewards guaranteed for all teams who successfully clear the idea phase and hack offline at the venue:
+                                </p>
+                                <ul className="space-y-3 font-mono text-[11px] md:text-xs text-gray-300">
+                                    <li className="flex items-start gap-3">
+                                        <span className="text-yellow-500 mt-0.5">▶</span>
+                                        <span>Free team plan access of Beeceptor for one month ($25)</span>
+                                    </li>
+                                    <li className="flex items-start gap-3">
+                                        <span className="text-yellow-500 mt-0.5">▶</span>
+                                        <span>Appwrite Cloud Pro credits (worth $50)</span>
+                                    </li>
+                                    <li className="flex items-start gap-3">
+                                        <span className="text-yellow-500 mt-0.5">▶</span>
+                                        <span>Zulip Cloud Standard for one month</span>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
 
@@ -189,7 +231,8 @@ const TopDownCarCard = ({ rank, tier, prize, accentColor, glowColor, textColor, 
     const winnerTheme = {
         yellow: { laser: "bg-yellow-400", trophy: "text-yellow-500" },
         pink: { laser: "bg-pink-400", trophy: "text-pink-500" },
-    }[winnerColor as "yellow" | "pink"] || { laser: "bg-yellow-400", trophy: "text-yellow-500" };
+        cyan: { laser: "bg-cyan-400", trophy: "text-cyan-500" },
+    }[winnerColor as "yellow" | "pink" | "cyan"] || { laser: "bg-yellow-400", trophy: "text-yellow-500" };
     return (
         <motion.div
             initial={{ y: 100, opacity: 0 }}
