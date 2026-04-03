@@ -62,10 +62,10 @@ export const NavBar = () => {
             <div className="bg-carbon/80 backdrop-blur-md border border-white/10 rounded-full py-2 px-4 md:py-3 md:px-6 flex items-center justify-between pointer-events-auto shadow-2xl shadow-black/50 w-full lg:w-auto gap-4 md:gap-4 lg:gap-4 xl:gap-8 relative z-50">
 
                 {/* Logo */}
-                <Link href="/" className="text-lg md:text-xl font-bold tracking-tighter text-white flex items-center gap-2 cursor-pointer whitespace-nowrap">
+                <a onClick={(e) => handleNav(e, '', false, '/')} className="text-lg md:text-xl font-bold tracking-tighter text-white flex items-center gap-2 cursor-pointer whitespace-nowrap">
                     <img src="/byteverse.png" width={32} height={32} alt="ByteVerse Logo" className="rounded-full" />
                     BYTEVERSE
-                </Link>
+                </a>
 
                 {/* Desktop Menu */}
                 <div className="hidden lg:flex items-center gap-1 bg-white/5 rounded-full p-1 border border-white/5">
