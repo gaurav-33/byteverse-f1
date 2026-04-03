@@ -43,8 +43,8 @@ export const Landing = () => {
             if (storedTime) {
                 // The second argument to parseInt is the base/radix (10 for decimal), not the minutes limit!
                 const timePassed = Date.now() - parseInt(storedTime, 10);
-                // IF less than 3 minutes (180,000 ms) have passed, skip the animation
-                if (timePassed < 3 * 60 * 1000) {
+                // IF less than 5 minutes (300,000 ms) have passed, skip the animation
+                if (timePassed < 5 * 60 * 1000) {
                     return true;
                 }
             }
