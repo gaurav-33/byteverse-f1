@@ -70,6 +70,60 @@ const currentSponsors = [
                 shadow: "hover:shadow-[0_0_40px_rgba(99,102,241,0.25)]"
             }
         ]
+    },
+    {
+        category: "Refreshment Partner",
+        icon: "local_cafe",
+        color: "text-amber-500",
+        sponsors: [
+            {
+                name: "Sone Zone Cafe",
+                imageUrl: "/sponsors/sonezone.jpeg",
+                base: "bg-amber-600/30",
+                hover: "hover:bg-amber-500/80",
+                accent: "bg-amber-500",
+                shadow: "hover:shadow-[0_0_40px_rgba(245,158,11,0.25)]",
+                cardBg: "bg-[#0a0a0c]",
+                textColor: "text-white",
+                showText: true
+            }
+        ]
+    },
+    {
+        category: "Entrepreneurship Partner",
+        icon: "lightbulb",
+        color: "text-emerald-500",
+        sponsors: [
+            {
+                name: "Incubation Center",
+                imageUrl: "/sponsors/Entrepreneurship.jpeg",
+                base: "bg-emerald-600/30",
+                hover: "hover:bg-emerald-500/80",
+                accent: "bg-emerald-500",
+                shadow: "hover:shadow-[0_0_40px_rgba(16,185,129,0.25)]",
+                cardBg: "bg-white",
+                textColor: "text-gray-900",
+                showText: true
+            }
+        ]
+    },
+    {
+        category: "Merchandise Partner",
+        icon: "shopping_bag",
+        color: "text-orange-500",
+        sponsors: [
+            {
+                name: "Reel2Real",
+                imageUrl: "/sponsors/Reel2RealLogo.png",
+                base: "bg-orange-600/30",
+                hover: "hover:bg-orange-500/80",
+                accent: "bg-orange-500",
+                shadow: "hover:shadow-[0_0_40px_rgba(249,115,22,0.25)]",
+                cardBg: "bg-white/95",
+                textColor: "text-gray-900",
+                showText: true
+            }
+        ]
     }
 ];
 
@@ -118,7 +172,7 @@ export const Sponsors = () => {
                                     key={sponsor.name}
                                     className={`group relative p-[1px] shrink-0 transition-all duration-300 ${sponsor.shadow} ${sponsor.base} ${sponsor.hover} [clip-path:polygon(20px_0,100%_0,100%_calc(100%_-_20px),calc(100%_-_20px)_100%,0_100%,0_20px)] ${group.sponsors.length === 1 ? 'w-full max-w-[480px]' : ''}`}
                                 >
-                                    <div className={`relative w-full h-full bg-white/95 backdrop-blur-md p-8 flex flex-col items-center justify-center gap-6 overflow-hidden min-h-[160px] [clip-path:polygon(20px_0,100%_0,100%_calc(100%_-_20px),calc(100%_-_20px)_100%,0_100%,0_20px)] ${group.sponsors.length === 1 ? 'md:min-h-[260px]' : ''}`}>
+                                    <div className={`relative w-full h-full backdrop-blur-md p-8 flex flex-col items-center justify-center gap-6 overflow-hidden min-h-[160px] [clip-path:polygon(20px_0,100%_0,100%_calc(100%_-_20px),calc(100%_-_20px)_100%,0_100%,0_20px)] ${group.sponsors.length === 1 ? 'md:min-h-[260px]' : ''} ${sponsor.cardBg || 'bg-white/95'}`}>
 
                                         {/* Scanline overlay on hover */}
                                         <div className="absolute inset-0 scanlines opacity-0 group-hover:opacity-5 pointer-events-none transition-opacity"></div>
@@ -137,8 +191,8 @@ export const Sponsors = () => {
                                             }}
                                         />
 
-                                        {/* Fallback Text if image fails */}
-                                        <div className="hidden text-xl md:text-2xl font-black italic text-center text-gray-800 uppercase tracking-widest z-10">
+                                        {/* Text to show explicitly or fallback if image fails */}
+                                        <div className={`${sponsor.showText ? 'block' : 'hidden'} text-xl md:text-2xl font-black italic text-center uppercase tracking-widest z-10 ${sponsor.textColor || 'text-gray-800'}`}>
                                             {sponsor.name}
                                         </div>
                                     </div>

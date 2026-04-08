@@ -23,7 +23,7 @@ export const Resources = () => {
         {
             title: "Discord",
             sub: "Discord Comms",
-            url: "https://discord.com/invite/2ZfsdkTKh",
+            url: "https://discord.gg/SPpvaDebBS",
             icon: "discord",
             accent: "group-hover:border-[#5865F2] group-hover:bg-[#5865F2]/10 group-hover:shadow-[0_0_20px_rgba(88,101,242,0.15)]",
             textHover: "group-hover:text-[#5865F2]",
