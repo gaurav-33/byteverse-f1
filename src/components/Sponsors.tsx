@@ -18,6 +18,42 @@ const currentSponsors = [
         ]
     },
     {
+        category: "Entrepreneurship Partner",
+        icon: "lightbulb",
+        color: "text-emerald-500",
+        sponsors: [
+            {
+                name: "Incubation Center",
+                imageUrl: "/sponsors/Entrepreneurship.jpeg",
+                base: "bg-emerald-600/30",
+                hover: "hover:bg-emerald-500/80",
+                accent: "bg-emerald-500",
+                shadow: "hover:shadow-[0_0_40px_rgba(16,185,129,0.25)]",
+                cardBg: "bg-white",
+                textColor: "text-gray-900",
+                showText: true
+            }
+        ]
+    },
+    {
+        category: "Media Partner",
+        icon: "camera_alt",
+        color: "text-violet-500",
+        sponsors: [
+            {
+                name: "Photography and Media Club",
+                imageUrl: "/sponsors/VISTA_Logo_Black.png",
+                base: "bg-violet-600/30",
+                hover: "hover:bg-violet-500/80",
+                accent: "bg-violet-500",
+                shadow: "hover:shadow-[0_0_40px_rgba(139,92,246,0.25)]",
+                cardBg: "bg-white",
+                textColor: "text-gray-900",
+                showText: true
+            }
+        ]
+    },
+    {
         category: "Associate Sponsors",
         icon: "handshake",
         color: "text-fuchsia-500",
@@ -85,24 +121,6 @@ const currentSponsors = [
                 shadow: "hover:shadow-[0_0_40px_rgba(245,158,11,0.25)]",
                 cardBg: "bg-[#0a0a0c]",
                 textColor: "text-white",
-                showText: true
-            }
-        ]
-    },
-    {
-        category: "Entrepreneurship Partner",
-        icon: "lightbulb",
-        color: "text-emerald-500",
-        sponsors: [
-            {
-                name: "Incubation Center",
-                imageUrl: "/sponsors/Entrepreneurship.jpeg",
-                base: "bg-emerald-600/30",
-                hover: "hover:bg-emerald-500/80",
-                accent: "bg-emerald-500",
-                shadow: "hover:shadow-[0_0_40px_rgba(16,185,129,0.25)]",
-                cardBg: "bg-white",
-                textColor: "text-gray-900",
                 showText: true
             }
         ]
