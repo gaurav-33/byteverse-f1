@@ -27,6 +27,7 @@ const organizers = [
 ];
 
 import { Sponsors } from '../components/Sponsors';
+import { Judges } from './Judges';
 
 export const Landing = () => {
     const [timeLeft, setTimeLeft] = useState({
@@ -190,7 +191,7 @@ export const Landing = () => {
                     </div>
 
                     {/* Button */}
-                    <button 
+                    <button
                         onClick={() => document.getElementById('tracks')?.scrollIntoView({ behavior: 'smooth' })}
                         className="relative w-32 h-32 rounded-full bg-gradient-to-b from-gray-800 to-black border-4 border-gray-700 md:border-gray-700 shadow-[0_0_50px_rgba(0,0,0,0.8)] flex flex-col items-center justify-center transform transition-all duration-200 active:scale-95 group-hover:border-primary group-hover:shadow-[0_0_80px_rgba(255,30,0,0.6)] border-primary shadow-[0_0_80px_rgba(255,30,0,0.6)] md:shadow-[0_0_50px_rgba(0,0,0,0.8)] overflow-hidden"
                     >
@@ -287,6 +288,7 @@ export const Landing = () => {
             <Tracks />
             <Schedule />
             <Prizes />
+            <Judges />
 
             {/* Bottom Telemetry & Ticker */}
             <footer className={`relative z-20 w-full bg-carbon/90 border-t border-white/5 backdrop-blur-lg mt-auto transition-all duration-1000 delay-500 ${heroVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}`}>

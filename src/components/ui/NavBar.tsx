@@ -26,8 +26,8 @@ export const NavBar = () => {
 
     const getLinkClass = (isMobile: boolean) => {
         return `uppercase tracking-widest transition-all cursor-pointer ${isMobile
-                ? 'text-sm font-bold py-3 px-4 w-full text-center hover:bg-white/5 rounded-xl border border-transparent hover:border-white/5 text-gray-300 hover:text-white'
-                : 'px-3 lg:px-4 xl:px-5 py-2 text-sm rounded-full text-gray-300 hover:text-white hover:bg-white/10'
+            ? 'text-sm font-bold py-3 px-4 w-full text-center hover:bg-white/5 rounded-xl border border-transparent hover:border-white/5 text-gray-300 hover:text-white'
+            : 'px-3 lg:px-4 xl:px-5 py-2 text-sm rounded-full text-gray-300 hover:text-white hover:bg-white/10'
             }`;
     };
 
@@ -41,6 +41,9 @@ export const NavBar = () => {
             </a>
             <a onClick={(e) => handleNav(e, 'prizes', mobile)} className={getLinkClass(mobile)}>
                 Prizes
+            </a>
+            <a onClick={(e) => handleNav(e, 'judges', mobile)} className={getLinkClass(mobile)}>
+                Judges
             </a>
             <Link href="/pit-crew" className={getLinkClass(mobile)} onClick={() => mobile && setIsMobileMenuOpen(false)}>
                 Pit Crew
